@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{ margin:0; padding:0; list-style:none;}
+img{ border:none;}
+.big{ width:920px; height:320px; position:absolute; left:50%; top:50%; margin-left:-460px; margin-top:-160px; border:1px solid black;overflow:hidden;}
+.big .sMove{  height:300px; position:absolute;left:0; top:0;}
+.big .sMove li{ width:920px; height:300px; float:left;}
+.big .sNav{ width:920px; height:20px; position:absolute; bottom:0; left:0; background:black;}
+.big .sNav ol{ width:220px; height:10px; margin:5px auto;}
+.big .sNav ol li{ width:50px; height:10px; margin-right:5px; background:white; float:left; cursor:pointer;}
+.big .sNav ol li div{ width:0; height:10px; background:#3CF;}
+</style>
+
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="big" id="big">
+	<ul class="sMove">
+    	<li style="background:green"></li>
+        <li style="background:yellow"></li>
+        <li style="background:blue"></li>
+        <li style="background:red"></li>
+    </ul>
+    <div class="sNav">
+    	<ol>
+        	<li><div></div></li>
+            <li><div></div></li>
+            <li><div></div></li>
+            <li><div></div></li>
+        </ol>
+    </div>
+</div>
+
+    <script>
+        var oBig = document.getElementById('big'),
+            oUl = oBig.getElementsByTagName('ul')[0],
+            aLi = oUl.getElementsByTagName('li'),
+            oL = oBig.getElementsByTagName('ol')[0],
+            oLi = oL.getElementsByTagName('li'),
+            aDiv = oL.getElementsByTagName('div'),
+            timer = null,
+            speed = 0,
+            p = 0,
+            iNow = 0,
+            n = 0;
+        //获取oUl的宽度
+        oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+      
+       //鼠标移入移除事件
+       for(var i = 0;i<oLi.length;i++){
+            oLi[i].onmouseover = function(){ 
+                 clearInterval(timer); 
+            }
+            oLi[i].onmouseout = function(){
+                timer=setInterval(move,60);
+            }
+       }
+		
+	   var num=0;
+	   function move(){
+            num++;
+            for(var i=0;i<oLi.length;i++){
+            	aDiv[i].style.width = '';
+            	oLi[i].style.background = '';
+        	}
+            oLi[n].style.background = '#07343E';
+            aDiv[n].style.width = num+"px";
+            if(num==50){
+            	n++;
+                clearInterval(timer);
+                if(n > aLi.length-1)n=0;
+                oUl.style.left=-n*aLi[0].offsetWidth+"px";
+                oUl.style.transition="all 0.5s";
+                num=0;
+                timer=setInterval(move,60);
+            }
+        }
+	   timer=setInterval(move,60);
+	   
+	   for(var i=0; i<oLi.length; i++){
+	   	oLi[i].index=i;
+	   	oLi[i].onclick=function(){
+	   		n=this.index;
+	   		oUl.style.left=-n*aLi[0].offsetWidth+"px";
+	   		oUl.style.transition="all 0.5s";
+	   		for(var i=0;i<oLi.length;i++){
+            	aDiv[i].style.width = '';
+            	oLi[i].style.background = '';
+        	}
+            oLi[n].style.background = '#07343E';
+            aDiv[n].style.width = 0+"px";
+            num=0;
+	   	}
+	   }
+    </script>
+</body>
+</html>

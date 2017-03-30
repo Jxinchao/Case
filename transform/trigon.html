@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	#box{
+		width:300px;
+		height:200px;
+		position:absolute;
+		left: 50%;
+		top:50%;
+		margin: -100px 0 0 -150px;
+		transform:perspective(800px) rotateY(30deg);
+		transform-style:preserve-3d;
+	}
+	.box1{
+		width:300px;
+		height:200px;
+		background:green;
+		position:absolute;
+		top:0px;
+		left:0px;
+		transform-origin:50% 100%;
+		transform:translateZ(100px) rotateX(30deg) ;		
+	}
+	.box2{
+		width:300px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		top:0px;
+		left:0px;
+		transform-origin:50% 100%;
+		transform:translateZ(-100px) rotateX(-30deg);		
+	}
+	.box3{
+		width:300px;
+		height:200px;
+		background:black;
+		position:absolute;
+		top:0px;
+		left:0px;
+		transform-origin:50% 100%;
+		transform:translateZ(-100px) rotateX(-90deg) ;		
+	}
+	.box4{
+		width:200px;
+		height:174px;
+		background:lime;
+		position:absolute;
+		top:27px;
+		left:-100px;
+		-webkit-clip-path:polygon(50% 0,100% 100%,0 100%);
+		transform-origin:50% 100%;
+		transform:rotateY(-90deg) ;
+	}
+	.box5{
+		width:200px;
+		height:174px;
+		background:pink;
+		position:absolute;
+		top:27px;
+		left:200px;
+		-webkit-clip-path:polygon(50% 0,100% 100%,0 100%);
+		transform-origin:50% 100%;
+		transform:rotateY(90deg) ;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+		<div class="box5"></div>
+	</div>
+	<script>
+		var n = 0;
+		setInterval(function(){
+			n += 0.1;
+			box.style.transform = 'rotateX('+n+'deg) rotateY('+n+'deg)';
+		})
+	</script>
+</body>
+</html>

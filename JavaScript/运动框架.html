@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>框架</title>
+		<style>
+	*{margin:0px;padding: 0px;}
+	body{width:800px;margin: 0 auto;}
+	#nav ul li{line-height:30px;}
+	#nav ul>li{float:left;width:100px;background: #666;} /*>子级 只浮动子级*/
+	#nav ul li ol{width:100px;overflow:hidden;height:0px;clear: both;}
+	#nav ul li ol li{background: red;}
+	#banner{clear:both;}
+	#banner ul li{float:left;width: 130px;height: 90px;background: orange;position: relative;}
+	#banner ul li span{width:130px;height: 90px;display:block;background:#999;opacity: 0.4;position:absolute;top:0px;left: 0px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var tim=null;
+		var speed;
+		function statr(l,obj){
+			clearInterval(obj.tim);
+			obj.tim=setInterval(function(){
+			speed=(l-obj.offsetHeight)/7;
+			speed>0?speed=Math.ceil(speed):speed=Math.floor(speed);
+				if(obj.offsetHeight==l){
+					clearInterval(obj.tim);
+				}else{
+					obj.style.height=obj.offsetHeight+speed+'px';
+				}
+			},25)
+		}
+
+		var oNav=document.getElementById('nav');
+		for(var i=0;i<oNav.children[0].children.length;i++){
+			oNav.children[0].children[i].onmouseover=function(){
+				statr(this.children[0].children[0].offsetHeight*this.children[0].children.length,this.children[0]);
+			}
+			oNav.children[0].children[i].onmouseout=function(){
+				statr(0,this.children[0]);
+			}
+		}
+
+
+
+		var obanner=document.getElementById('banner');
+		for(var i=0;i<obanner.children[0].children.length;i++){
+			obanner.children[0].children[i].onmouseover=function(){
+				statr(this.offsetHeight,this.children[0]);
+			}
+			obanner.children[0].children[i].onmouseout=function (){
+				statr(0,this.children[0])		
+			}
+		}
+
+
+
+	}
+	</script>
+</head>
+<body>
+		<div id="nav">
+		<ul>
+			<li>公司简介
+				<ol>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+				</ol>
+			</li>
+			<li>新闻资讯
+				<ol>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+				</ol>
+			</li>
+			<li>全部产品
+				<ol>
+					<li><a href="#">生化武器</a></li>
+					<li><a href="#">绿色武器</a></li>
+					<li><a href="#">召唤师武器</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+				</ol>
+			</li>
+			<li>公司简介
+				<ol>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+					<li><a href="#">成员介绍</a></li>
+				</ol>
+			</li>
+		
+		</ul>
+	</div>
+	<div id="banner">
+		<ul>
+			<li>房产
+				<span></span>
+			</li>
+			<li>房产
+				<span></span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

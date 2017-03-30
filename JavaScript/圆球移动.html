@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.move{width:40px;height:40px;background:green;position:absolute;border-radius:50%;cursor:none;}
+
+	</style>
+
+	<script>
+
+	window.onload=function(){
+		for(var i=0;i<20;i++){
+			var div=document.createElement('div');
+			div.className='move';
+			document.getElementsByTagName('body')[0].appendChild(div);
+		}
+		var _class=document.getElementsByClassName('move');
+		document.onmousemove=function(a){
+			var b=a||event;
+			with(_class[0].style){
+			 left=b.clientX-_class[0].offsetWidth/2+'px';
+			 top=b.clientY-_class[0].offsetHeight/2+'px';	
+			};
+			for(var i=_class.length-1;i>0;i--){
+				with(_class[i].style){
+					 left=_class[i-1].offsetLeft+10+'px';
+					 top=_class[i-1].offsetTop+'px'; 
+					 width=_class[i-1].offsetWidth-1+'px';
+					 height=_class[i-1].offsetHeight-1+'px';
+					 opacity=(100-i*3)/100;
+				};
+			}
+		}
+}
+	</script>
+</head>
+<body>
+	vfd gf g 
+</body>
+</html>

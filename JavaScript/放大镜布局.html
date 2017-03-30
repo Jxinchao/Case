@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜布局</title>
+	<style>
+	*{ margin:0; padding:0;}
+	body{ margin:0 auto;}
+	#small{width:500px;height:280px;position:relative;overflow:hidden;}
+	#div{width:230px;height:200px;background:red;position:absolute;left:550px;top:0px;overflow:hidden;	display:none}
+	#div img{ position:absolute;}
+	#div1{ width:100px; height:100px;background:red;opacity:0.3;position:absolute;left:0;top:0;display:none}
+	
+	</style>
+	<script>
+window.onload=function(){
+	var oSmall=document.getElementById('small');
+	var oDiv=document.getElementById('div1');
+	var oDi=document.getElementById('div');
+
+	
+	oSmall.onmouseout=function(){
+		oDiv.style.display='';
+		oDi.style.display='';
+	}
+	oSmall.onmouseover=function(){
+		oDiv.style.display='block';
+		oDi.style.display='block';
+	
+	oDiv.onmousemove=function(ev){
+			var ev=ev||event;
+			oDiv.style.left=ev.clientX-this.offsetWidth/2+'px';
+			oDiv.style.top=ev.clientY-this.offsetHeight/2+'px';
+	if(this.offsetLeft<0){
+		this.style.left=0
+	}	
+	if(this.offsetLeft>oSmall.offsetWidth-this.offsetWidth){
+		this.style.left=oSmall.offsetWidth-this.offsetWidth+'px';
+	}
+	if(this.offsetTop>oSmall.offsetHeight-this.offsetHeight){
+		this.style.top=oSmall.offsetHeight-this.offsetHeight+'px';
+	}
+	if(this.offsetTop<0){
+		this.style.top=0
+	}		
+	var bfb_l=this.offsetLeft/(oSmall.offsetWidth-this.offsetWidth);
+	var bfb_t=this.offsetTop/(oSmall.offsetHeight-this.offsetHeight)
+	oDi.children[0].style.left=-(oDi.children[0].offsetWidth-oDi.offsetWidth)*bfb_l+'px'
+		
+	oDi.children[0].style.top=-(oDi.children[0].offsetHeight-oDi.offsetHeight)*bfb_t+'px'
+
+	}
+	}
+
+}	
+	</script>
+
+</head>
+<body>
+	<div id="small">
+		<img src="img/lunbo2.jpg" width="500" height="280"/>
+		<div id="div1"></div>
+	</div>
+	<div id="div">
+		<img src="img/lunbo2.jpg"/>
+	</div>
+</body>
+</html>

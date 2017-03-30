@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	.active{
+		width:60px;
+		height:60px;
+		background:red;
+		position:absolute;
+		top:0;
+	}
+	</style>
+</head>
+<body>
+	
+	<script>
+
+	  	var W = window.innerWidth,
+	  		n = Math.floor(W/70),
+	  		oBox = document.getElementsByTagName('div'),
+	  		iNow = 0,
+	  		timer = null;
+	  	for(var i=0;i<n;i++){
+	  		var box = document.createElement('div');
+	  		box.className = 'active';
+	  		box.style.left = i*72 +'px';
+	  		box.style.transition = 'all 0.5s ease';
+	  		document.body.appendChild(box);
+	  	}
+
+	  	var c = document.documentElement.clientHeight-oBox[0].offsetHeight,
+	  	    boff = false,
+	  		baff = true;
+	  
+	  	
+	  	document.onclick = function(){
+	  		if(boff){
+	  			return;
+	  		}
+	  		boff = true;
+	  		if(baff){
+	  			timer = setInterval(function(){
+	  				oBox[iNow].style.top = c + 'px';
+	  				iNow++;
+	  				if(iNow == oBox.length){
+	  					iNow = 0;
+	  					clearInterval(timer);
+	  					baff = false;
+	  					boff = false;
+	  				}
+
+	  			},70)
+	  		}else{
+	  			timer = setInterval(function(){
+	  				oBox[iNow].style.top = '0px';
+	  				iNow++;
+	  				if(iNow == oBox.length){
+	  					iNow = 0;
+	  					clearInterval(timer);
+	  					baff = true;
+	  					boff = false;
+	  				}
+
+	  			},70)
+	  		}
+	  	}
+	  	
+	</script>
+</body>
+</html>

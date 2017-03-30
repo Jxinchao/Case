@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;padding:0;
+	}
+	#box{
+		width:300px;height:250px;position:absolute;left:0;top:0;bottom:0;right:0;margin:0 auto;
+	}
+	#box>span{
+		position:absolute;transition:0.8s;display:block;
+	}
+	#box>img{
+		width:100%;height:100%;
+	}
+	input{
+		width:130px;height:30px;position:absolute;left:10px;top:10px;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="点击见证奇迹的一刻" id="btn" />
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		var x = 10,
+			y = 10,
+			oBox = box.getElementsByTagName('span'),
+			boff = false,
+	  		baff = true;
+		for(var i = 0;i < x ;i++){
+			for(var j = 0;j < y;j++){
+				var box1 = document.createElement('span');
+				box1.style.width = '30px';
+				box1.style.height = '30px';
+				box1.style.left = j*box.offsetWidth/x+'px';
+				box1.style.top  = i*box.offsetHeight/y+'px';
+				box1.style.background = 'url(img/hl-1.jpg)';
+				box1.style.backgroundPosition = -(j*box.offsetWidth/x)+'px '+(-i*box.offsetHeight/y)+'px';
+				box.appendChild(box1)
+			}
+		}
+	  	btn.onclick = function(){
+	  		if(boff){
+	  			return;
+	  		}
+	  		boff = true;
+	  		if(baff){
+	  			var iNow1=99;
+	  			timer = setInterval(function(){
+	  				console.log(iNow1)
+	  				if(iNow1 == -1){
+	  					iNow1 = 99;
+	  					clearInterval(timer);
+	  					baff = false;
+	  					boff = false;
+	  				}
+	  				oBox[iNow1].style.transform = 'translateY(350px)';
+	  				oBox[iNow1].style.backgroundImage = 'url(img/hl-2.jpg)';
+	  				iNow1--;
+	  				
+	  			},70)
+	  		}else{
+	  			var iNow2=0;
+	  			timer = setInterval(function(){
+	  				console.log(iNow2)
+	  				if(iNow2 == oBox.length){
+	  					iNow2 = 0;
+	  					clearInterval(timer);
+	  					baff = true;
+	  					boff = false;
+	  				}
+	  				oBox[iNow2].style.transform = 'translateY(0px)';
+	  				oBox[iNow2].style.backgroundImage = 'url(img/hl-1.jpg)';
+	  				iNow2++;
+	  				
+	  			},70)
+	  		}
+	  	}
+	</script>
+</body>
+</html>

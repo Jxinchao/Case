@@ -1,0 +1,103 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+    <style type="text/css">
+   *{margin: 0;padding: 0;}
+#div1{
+	width: 150px;height: 150px;
+	position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;
+	font-size: 25px;
+	border:5px dashed #000;
+	text-align: center;line-height: 150px;
+	color: #FF00FF;
+	font-weight: bold;
+}
+body,html{height: 100%}
+#loads{
+	width:0%;height: 50px;position: absolute;top: 0;background:#AAD327;
+	transition:0.2s linear;border-radius: 10px;line-height: 50px;font-size: 25px;font-weight: bold;
+}
+#Am{
+	width: 398px;height: 50px;border:1px solid #000;position: relative;border-radius: 10px;
+}
+.div{
+	float:left;width: 198px;border: 1px solid #FF00FF;border-radius: 10px;height: 198px;
+}
+#xin{
+	width: 400px;height: 200%;background: #ccc;text-align: center;
+}
+#p{position: absolute;top: 50px;left:450px;font-size: 25px;font-weight: bold;}
+#p1{width:200px;position: absolute;top: 150px;right:50px;font-size: 16px;}
+
+    </style>
+</head>
+<body>
+	<p id="p">亲：仅支持 GIF JPG HTML MP3 MP4 TXT PNG MOV 格式,O(∩_∩)O谢谢合作!</p>
+	<p id="p1">误区温馨提示：不要看进度条里面的数一直是100%,那是因为文件太小，换个大的试试</p>
+	<div id="xin">
+		<div id="Am"><div id='loads'></div></div>
+		<div id='div1'>请添加文件</div>
+	</div>
+	<script type="text/javascript">
+	function addEvent(obj,event,fn){
+			if(obj.attachEvent){
+				obj.attachEvent('on'+event,fn);
+			}
+			else{
+				obj.addEventListener(event,fn,false);
+			}
+		}
+	div1.ondragenter = function(){
+		this.innerHTML = '请松手';
+		loads.style.width = 0;
+		 loads.innerHTML ='';
+		loads.transition = "0s"
+	};
+	div1.ondragleave = function(){
+		this.innerHTML = '请拖进文件';
+	};
+	div1.ondrop = function(e){
+		this.innerHTML = '正在读取中...'
+		var oFile = e.dataTransfer.files[0]
+		var file = new FileReader();
+		file.readAsBinaryString(oFile);
+		console.log(oFile)
+		file.onprogress = function(e){
+			loads.style.width = parseInt(e.loaded/e.total*100) + '%';
+			loads.innerHTML = Number(parseInt(e.loaded/e.total*100)) + '%';
+			if(e.loaded == e.total){
+				setTimeout(function(){
+					div1.innerHTML = '读取完成...'
+				},500);
+				function Am(less,num){
+					if(oFile.type.indexOf(less)!=-1){
+						var oDiv = document.createElement('div');
+				        loads.transition = "1s"
+						oDiv.classList.add("div")
+						oDiv.innerHTML = '<img src="img/'+num+'.jpg">';
+						oDiv.innerHTML+='<p>'+'文件名:'+oFile.name+'</p>'
+						oDiv.innerHTML+='<p>'+'大小:'+oFile.size+'字节'+'</p>'
+						oDiv.innerHTML+='<p>'+'类型:'+oFile.type+'</p>'
+						xin.appendChild(oDiv);
+					}
+				}
+				Am('text/html','2_05')
+				Am('image/jpeg','2_09')
+				Am('text/plain','2_26')
+				Am('image/gif','2_03')
+				Am('image/png','2_17')
+				Am('video/quicktime','3_03')
+				Am('video/mp4','2_15')
+				Am('audio/mp3','2_13')
+			}
+		}
+		return false;
+	};
+	div1.ondragover = function(){
+		return false;
+	}
+	</script>
+</body>
+</html>

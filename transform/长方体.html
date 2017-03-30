@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	#box{
+		width:200px;
+		height:100px;
+		background:rgba(0,0,0,0);
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin:-100px 0 0 -100px;
+		transform:perspective(600px);
+		transform-style:preserve-3d;
+	}
+	#box .c1{
+		width:200px;
+		height:100px;
+		background:yellow;
+		position:absolute;
+		transform:translateZ(40px);
+	}
+	#box .c2{
+		width:200px;
+		height:100px;
+		background:blue;
+		position:absolute;
+		transform:translateZ(-40px);
+	}
+	#box .c3{
+		width:200px;
+		height:80px;
+		background:pink;
+		position:absolute;
+		transform:rotateX(90deg) translateZ(40px);
+	}
+	#box .c4{
+		width:200px;
+		height:80px;
+		background:green;
+		position:absolute;
+		transform:rotateX(-90deg) translateZ(60px);
+	}
+	#box .c5{
+		width:80px;
+		height:100px;
+		background:lime;
+		position:absolute;
+		transform:rotateY(-90deg) translateZ(40px);
+	}
+	#box .c6{
+		width:80px;
+		height:100px;
+		background:purple;
+		position:absolute;
+		transform:rotateY(-90deg) translateZ(-160px);
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="c1"></div>
+		<div class="c2"></div>
+		<div class="c3"></div>
+		<div class="c4"></div>
+		<div class="c5"></div>
+		<div class="c6"></div>
+	</div>
+
+	<script>
+		var n = 0;
+
+		setInterval(function(){
+			n += 0.3;
+			box.style.transform = 'rotateX('+n+'deg) rotateY('+n+'deg)'
+		})
+	</script>
+</body>
+</html>

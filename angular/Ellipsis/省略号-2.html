@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="my">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="a">
+		<ul>
+			<li>{{str | truncate:7}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module('my',[]);
+		app.controller('a',function($scope){
+			$scope.str = 'sdfdsfdsfdsfdsfsdf'
+		})
+		app.filter("truncate", function(){
+    		return function(text, length){
+       			 if (text) {
+           			 var ellipsis = text.length > length ? "..." : "";
+            		return text.slice(0, length) + ellipsis;
+            		//slice 切割
+        		};
+        	return text;        
+   			}
+		});
+	</script>
+</body>
+</html>

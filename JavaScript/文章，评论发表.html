@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发表文章</title>
+<style type="text/css">
+	*{margin:0px;padding:0px;}
+	#text1{width:500px;height:50px;font-size: 20px;margin-top:30px}
+	#div{width:500px;height:180px;border:3px #000 solid;margin-top:30px;overflow-x:hidden; }
+	input{width:50px;height:30px;background:#999;}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var oText=document.getElementById('text1');
+		var oDiv=document.getElementById('div');
+		var oInput=document.getElementsByTagName('input')[0];
+
+		function a(){
+			oDiv.innerHTML+=oText.value+'<br/>';
+			oText.value='';
+		}
+		oInput.onclick=function(){
+			a();
+		}
+
+		document.onkeydown=function(ev){
+			var ev=ev||event;
+			if(ev.keyCode==13&&ev.altKey){
+				if(oText.value==''){
+					alert('哈哈');
+				}else{
+					a()
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<p>大家都再说明年房价会减低</p>
+	<br/>
+	<div id="div"></div>
+	<textarea id="text1"></textarea>
+	<input type="button" value="发表"/>
+</body>
+</html>

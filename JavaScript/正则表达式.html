@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+<script type="text/javascript" src="js.js"></script>
+<script type="text/javascript">
+	window.onload=y
+	function y(){
+		var oForm=document.forms[0];
+		var _usename=oForm.usename;
+		var _password=oForm.password;
+		var str=true;
+		
+	function s(obj,tex,fn){
+		obj.onfocus=function(){	//光标焦点
+			if(this.value==''){
+				this.value='';
+			}
+				nextSibling(this,'span').innerHTML=tex;
+		}
+		obj.onblur=function(){		//失去焦点
+			if(fn(this.value)){
+				nextSibling(this,'span').style.color='green';
+				nextSibling(this,'span').innerHTML='输入正确'
+			}else{
+				nextSibling(this,'span').style.color='red';
+				nextSibling(this,'span').innerHTML=tex
+			}
+		}
+		obj.onblur();
+	}
+
+	s(_usename,'请输入6-12位用户名，用字母和_开头',function(m){
+		if(m.length>=6&&m.length<=12){
+			str=true;
+			return true;
+		}else{
+			str=false;
+			return false;
+		}
+		
+	});
+	s(_password,'请输入6-18位密码',function(m){
+		if(m.length>=6&&m.length<=18){
+			str=true;
+			return true;
+		}else{
+			str=false;
+			return false;
+		}
+	});
+	return str;
+	}
+</script>
+</head>
+<body>
+	<form name="for1" action="a.html" method="post" onsubmit="return y()">
+		<label>用户名<input type="text" name="usename"/><span></span></label><br/>
+		<label>用户名<input type="password" name="password"/><span></span></label><br/>
+		<input type="submit" value="登录" />
+	</form>
+</body>
+</html>

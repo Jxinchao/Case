@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function a(name,age){
+		var obj = new Object();
+		obj.name = name;
+		obj.age = age;
+		obj.runs = function(){
+			return this.name + this.age;
+		}
+		return obj;    //返回对象引用，如果么有就无法实例化对象了;
+	}
+	var data = a('超超','18');
+	var data1 = a('超人不会灰','1000')
+	/*alert(data.runs())
+	alert(data1.runs())
+	//如果弹出data和data1的类型时都是object，所以无法区分是哪个对象实例化的
+	alert(typeof data); //因为上面返回的是obj,obj是对象
+
+	alert(typeof data1)*/
+
+	alert(data instanceof Object)  //判断是否属于哪个类型
+	alert(data1 instanceof Object)
+	</script>
+</body>
+</html>

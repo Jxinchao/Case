@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		body{
+			width:100%;
+			height:100%;
+			background:url(img/bg.png) no-repeat;
+			background-size:cover;
+		}
+		#box{
+			width:300px;
+			height:327px;
+			background:url(img/c.png);
+			border-radius:3px;
+			overflow:hidden;
+			position:relative;
+			left:50%;
+			left:50%;
+			margin:100px 0 0 -150px;
+		}
+		.controls{
+			width:298px;
+			height:130px;
+			background:rgba(33,32,30,0.91);
+			border:1px solid #131313;
+			position:absolute;bottom:0;
+		}
+		.current{
+			width:300px;
+			height:8px;
+			background:#0f0f0f;
+			border-top:1px solid #060606;
+			border-bottom:1px solid #060606;
+		}
+		.currentTime{
+			display:block;
+			width:0%;
+			height:8px;
+			background:#cc473e;
+		}
+		.text{
+			width:100%;
+			height:55px;
+		}
+		.text h1{
+			font-size:17px;
+			text-align:center;
+			color:#fff;
+			line-height:28px;
+		}
+		.text h6{
+			font-size: 9px;
+			text-align:center;
+			color:#adadad;
+			line-height:20px;
+		}
+		.con{
+			width:100%;
+			height:53px;
+			position:relative;
+		}
+		.con .r{
+			display:block;
+			width:16px;
+			height:14px;
+			background:url(img/r.png);
+			margin-left:14px;
+			margin-top:14px;
+			float:left;
+			color:#fff;
+			text-align:center;
+			line-height:14px;
+			cursor:pointer;
+		}
+		.con .play-1{
+			width:97px;
+			height:31px;
+			background:#2e2e2e;
+			float:left;
+			margin-left:70px;
+			border-radius:45px;
+			border:2px solid #0a0a0a;
+			margin-top:5px;
+			position:relative;
+		}
+		.con .pla{width:44px;height:44px;border-radius:50%;border:2px solid #0a0a0a;position:absolute;left:25px;top:-8px;background:#292929 url(img/pause.png) no-repeat center;text-align:center;line-height:44px;cursor:pointer;}
+		.con .left{display:block;position:absolute;width:14px;height:12px;background:url(img/left.png) no-repeat;left:7px;top:9px;cursor:pointer;}
+		.con .right{display:block;position:absolute;width:14px;height:12px;background:url(img/right.png) no-repeat;right:7px;top:9px;cursor:pointer;}
+		.con .y{width:34px;height:34px;background:#1d1d1d url(img/y.png) no-repeat center;border:2px solid #0a0a0a;position:absolute;right:17px;top:5px;border-radius:50%;}
+		.con .co{display:none;width:30px;height:94px;position:absolute;border-radius:3px;background:rgba(43,43,42,0.93);right:18px;bottom:60px;border:1px solid #0d0c0c;cursor:pointer;}
+		.con .co i{display:block;width:8px;height:5px;position:absolute;background:url(img/s.png) no-repeat;bottom:-5px;left:11px;}
+		.con .yl{width:4px;height:73px;display:block;background:#0f0f0f;border:1px solid #090909;margin-left:12px;margin-top:9px;position:relative;}
+		.con .yl .red{width:4px;height:100%;display:block;background:#bb3c32;position:absolute;bottom:0;} 
+		.cf{width:10px;height:4px;display:block;background:#ccc6c6;position:absolute;left:-3px;top:20px;cursor:pointer;}
+	</style>
+</head>
+<body>
+	<div id="box">
+	<audio id='audio' src='1.mp3'></audio>
+		<div class="controls">
+			<div class="current" id="cur">
+				<div class="currentTime" id="_current"></div>
+			</div>
+			<div class="text">
+				<h1 id="h1">The Briefcase</h1>
+				<h6 id="h6">James Homer - The AmaZing Spuer-sss</h6>
+			</div>
+
+			<div class="con">
+				<span class="r" id="r"></span>
+				<div class="play-1">
+					<div class="pla" id="pla"></div>
+					<span class="left" id="s"></span>
+					<span class="right" id="x"></span>
+				</div>
+
+				<div class="y" id="Y"></div>
+				<div class="co" id="co">
+					<i></i>
+					<span class="yl" id="y1">
+						<span class="red"></span>
+						<span class="cf" id="cf"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	//播放暂停
+		pla.onclick = function(){
+			if(pla.innerHTML == ''){
+				audio.play();
+				pla.innerHTML = '1'
+				pla.style.background = '#fff'  
+			}
+			else{
+				audio.pause();
+				pla.innerHTML = ''
+				pla.style.background = '#292929 url(img/pause.png) no-repeat center'
+			}
+		};
+	//进度条
+
+	audio.addEventListener('timeupdate',function(){
+		var NeedWidth = audio.currentTime/audio.duration*100;
+		_current.style.width = (audio.currentTime/audio.duration*100)+'%';
+	},false);
+
+	function findPar(obj,posi,border){
+		var attr1=obj[posi];
+		while(obj.tagName!="BODY"){
+			obj=obj.offsetParent;
+			attr1=attr1+obj[posi];
+		}
+		return attr1=attr1+border;
+	}
+	cur.addEventListener("click",tz,false);
+	function tz(ev){
+		var ev=ev||event;
+		var length1=ev.clientX-findPar(cur,"offsetLeft",1);
+		if(length1<0){
+			length1=0;
+		}else if(length1>cur.offsetWidth){
+			length1=cur.offsetWidth;
+		}
+		var b5=length1/cur.offsetWidth;
+		audio.currentTime=parseInt(audio.duration*b5);
+		_current.style.left=length1+"px";
+	}
+
+	//音量
+	var timer = null;
+	//audio.volume = 0.8;
+	Y.onmousemove = function(){
+		co.style.display = 'block';
+	}
+	Y.onmouseout = function(){
+		timer=setTimeout(function(){
+			co.style.display = '';
+		},500)
+	}
+	co.onmousemove = function(){
+		clearTimeout(timer);
+		co.style.display = 'block';
+	}
+	co.onmouseout = function(){
+		timer=setTimeout(function(){
+			co.style.display = '';
+		},500)
+	}
+	cf.addEventListener("mousedown",yinliang,false);
+	function yinliang(ev){
+		var ev = ev||event;
+		var top2 = ev.clientY - 200 - cf.offsetTop;
+		document.onmousemove = null;
+		document.onmousemove = function(ev){
+			var ev = ev||event;
+			var top1 = ev.clientY;
+			var top3 = top1-200-top2;
+			cf.style.top = top3+"px";
+			if(cf.offsetTop < 0){
+				cf.style.top = 0+"px";
+			}else if(cf.offsetTop >= 70){
+				cf.style.top = 70 +"px";
+			}
+			var b3 = top3/67;
+			var num = parseInt(100-100*b3);
+			if(num < 0){
+				num = 0;
+			}else if(num > 100){
+				num = 100;
+			}
+			audio.volume = num/100;
+		}
+		document.onmouseup = function(ev){
+			document.onmousemove = null;
+		}
+	}
+
+	//上一曲 下一曲
+	var arr = ['1.mp3','2.mp3','3.mp3'];
+	var index = 0;
+	var arr1 = [{
+			'img':'img/c.png',
+			'name':'leo',
+			'fff':'James Homer - The AmaZing Spuer-sss'
+		},{
+			'img':'img/2.jpg',
+			'name':'souder',
+			'fff':'The AmaZing Spuer-sss'
+		},{
+			'img':'img/4.jpg',
+			'name':'super',
+			'fff':'AmaZing Spuer-sss'
+		}];
+	x.onclick = function(){
+		index++;
+		pla.innerHTML ='1';
+		pla.style.background = '#fff'
+		if(index == arr1[2].img)index = 0;
+		if(index == arr1[2].name)index = 0;
+		if(index == arr1[2].fff)index = 0;
+		if(index == arr.length)index = 0;
+		box.style.background = 'url('+arr1[index].img+')';
+		h1.innerHTML = arr1[index].name;
+		h6.innerHTML = arr1[index].fff;
+		audio.src = arr[index];
+		audio.play();
+	}
+	s.onclick = function(){
+		index--;
+		if(index == -1)index = arr.length-1;
+		if(index == arr1[2].img)index = 0;
+		if(index == arr1[2].name)index = 0;
+		if(index == arr1[2].fff)index = 0;
+		box.style.background = 'url('+arr1[index].img+')';
+		h1.innerHTML = arr1[index].name;
+		h6.innerHTML = arr1[index].fff;
+		audio.src = arr[index];
+		audio.play();
+		pla.innerHTML ='1';
+		pla.style.background = '#fff'
+	}
+
+
+	//循环播放
+	audio.addEventListener('ended',function (){
+		audio.currentTime = 0;
+		_current.style.width = 0 + '%';
+		if(r.innerHTML == ''){
+			pla.innerHTML = '';
+			pla.style.background = '#292929 url(img/pause.png) no-repeat center'
+		}
+		else{
+			audio.play();
+		}
+	},false);
+
+	r.onclick = function(){
+		if(r.innerHTML == ''){
+			this.innerHTML = 'o';
+			this.style.background = '#fff';
+			this.style.borderRadius = '50%';
+		}else{
+			this.innerHTML = '';
+			this.style.background = 'url(img/r.png)';
+		}
+	};
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/animation.css"/>
+</head>
+<body>
+	<select name="" id="select">
+		<option>选择您所需的动画</option>
+		<option>淡入</option>
+		<option>左右移入</option>
+		<option>右左移入</option>
+		<option>上下移入</option>
+		<option>下上移入</option>
+		<option>左右弹入</option>
+		<option>右左弹入</option>
+		<option>上下弹入</option>
+		<option>下上弹入</option>
+		<option>中心弹入</option>
+		<option>中心放大</option>
+		<option>翻滚进入</option>
+		<option>光速进入</option>
+		<option>悬挂</option>
+		<option>抖动</option>
+		<option>旋转</option>
+		<option>翻转</option>
+		<option>摇摆</option>
+		<option>淡出</option>
+		<option>翻转消失</option>
+	</select>
+
+	<div class="box">
+		<div class="" id="div"></div>
+	</div>
+
+	<script>
+		var oS = document.getElementById('select'),
+			oD = document.getElementById('div');
+		var arr = ['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty']
+		oS.onchange = function(){
+			var index = oS.selectedIndex;
+			//console.log(this.value)
+			oD.className = arr[index];
+		}
+	</script>
+</body>
+</html>

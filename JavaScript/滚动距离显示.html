@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload=window.onscroll=function (){
+	var _scroll=document.documentElement.scrollTop||document.body.scrollTop;
+	var _height=document.documentElement.clientHeight||document.body.clientHeight;	
+	var _div2=document.getElementById('div2');
+	var _div1=document.getElementById('div1');
+	var _main=document.getElementById('main');
+	var speed;
+	var tim=null;
+	if(_scroll>_main.children[0].offsetTop){
+		_div1.style.display='block'
+		_div1.style.top= _scroll+_height-_div1.offsetHeight-_div2.offsetHeight-20+'px'
+		}
+		if(_scroll<_main.children[0].offsetTop){
+		_div1.style.display='none'
+	
+		}
+	
+	if(_scroll>100){
+		
+		_div2.style.display='block'
+		_div2.style.top= _scroll+_height-_div2.offsetHeight-10+'px'
+		}
+	
+		if(_scroll<100){
+		
+		_div2.style.display='none'
+		
+		}
+	
+	var one=document.getElementById('one')
+	one.onclick=function (){
+		clearInterval(tim)
+		tim=setInterval(function (){	
+			var _scroll=document.documentElement.scrollTop||document.body.scrollTop;
+		speed=Math.floor((0-_scroll)/7)
+		if(speed==0){clearInterval(tim)}
+		else{
+		window.scrollBy(0,speed)
+	
+		}
+		},24)
+		}
+	
+}
+
+</script>
+<style type="text/css">
+*{margin:0;padding:0;}
+li{list-style:none}
+#div2{width:40px;position:absolute; right:0;top:400px}
+#div2 ul li{width:40px;height:40px; line-height:40px; }
+
+#div1{width:40px; position: absolute;right:0;top:180px;background:#fff; display:none}
+#div1 ul li{width:40px;height:40px; line-height:40px;text-indent:4px}
+#div2{display:none}
+#div2 ul li#one{background:green ;text-indent:4px; }
+#a,#b,#c,#d,#e,#yule{height:400px;background:yellow;margin:10px}
+#div2 ul li#two{background:lime;}
+</style>
+</head>
+
+<body style="height:4000px">
+
+
+<div id="top" style="height:700px">
+
+sadkjflkdsaf kjfdsa kjfdsak fdsa kjfdsa 
+
+</div>
+
+
+
+<div id="div1">
+<ul>
+<li style='background:#dddd3a'>美食</li>
+<li>娱乐</li>
+<li>电影</li>
+<li>酒店</li>
+<li>生活</li>
+<li>美食</li>
+<li>娱乐</li>
+<li>电影</li>
+<li>酒店</li>
+<li>生活</li>
+</ul>
+</div>
+
+<div id="div2">
+<ul>
+<li id="two"></li>
+<li id="one">顶层</li>
+</ul>
+</div>
+
+<div id='main'>
+    <div id='c'>生汳</div>
+    <div id='a'>电影</div>
+    <div id='b'>小人特</div>
+    <div id='d'>abc</div>
+    <div id='e'>sfdsdafdsafdsaf</div>
+    <div id='yule'>sfdsdafdsafdsaf</div>
+</div>
+</body>
+</html>

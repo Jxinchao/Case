@@ -1,0 +1,185 @@
+*{
+	margin:0;
+	padding:0;
+}
+html{
+	width:100%;
+	height:100%;
+}
+body{
+	width:100%;
+	height:100%;
+}
+.Fullscreen{
+	width:100%;
+	height:100%;
+	background:url(../img/bg.png) no-repeat;
+	background-size:cover;
+	display:flex;
+}
+.middle{
+	width:640px;
+	height:332px;
+	border:1px solid #5b616d;
+	margin:auto;
+}
+.video{
+	width:640px;
+	height:304px;
+	background:url(../img/video.png);
+	overflow:hidden;
+}
+video{
+	width:640px;
+	height:360px;
+	display:none;
+}
+/* 低栏 */
+.low{
+	width:640px;
+	height:28px;
+	background:url(../img/low.png);
+	position:relative;
+}
+/* 播放暂停 */
+.pause{
+	width:16px;
+	height:16px; 
+	background:url(../img/pause.png) no-repeat;
+	display:block;
+	position:absolute;
+	top:7px;
+	left:14px;
+	text-align: center;
+	line-height:16px;
+	cursor:pointer;
+}
+/* 进度条外面的 */
+.progress{
+	width:342px;
+	height:8px;
+	background:#202020;
+	display:block;
+	border:1px solid #1e1e1e;
+	border-radius:5px;
+	position:relative;
+	left:33px;
+	top:10px;
+	cursor:pointer;
+}
+/* 进度条里面的 */
+.schedule{
+	width:0%;
+	height:7px;
+	background:#555;
+	display:block;
+	position:absolute;
+	left:0;
+	border-radius:5px;
+}
+/* 拖动球 */
+.rag{
+	display: block;
+	width:15px;
+	height:16px;
+	background:url(../img/rag.png);
+	position:absolute;
+	left:0px;
+	top:-3px;
+	cursor:pointer;
+}
+/* 时间 */
+.time{
+	width:75px;
+	height:11px;
+	position:absolute;
+	left:392px;
+	top:5px;
+	color:#fff;
+}
+.time span{
+	font-size:12px;
+	transform:scale(0.5); 
+}
+
+/* 音量 */
+.volume{
+	width:18px;
+	height:16px;
+	background:url(../img/trumpet.png);
+	position:absolute;
+	left:473px;
+	top:6px;
+}
+/* 音量条 */
+.Yvolume{
+	width:60px;
+	height:8px;
+	background:#202020;
+	display:block;
+	border:1px solid #1e1e1e;
+	border-radius:5px;
+	position:relative;
+	left:497px;
+	top:0px;
+	
+}
+/* 音量条里面的 */
+.Yv{
+	width:0%;
+	height:7px;
+	background:#555;
+	display:block;
+	border-radius:5px;
+}
+/* 拖动球 */
+.Yrag{
+	display: block;
+	width:15px;
+	height:16px;
+	background:url(../img/rag.png);
+	position:absolute;
+	left:25px;
+	top:-4px;
+	cursor:pointer;
+}
+/* 全屏 */
+.fullscreen{
+	width:13px;
+	height:15px;
+	background:url(../img/fullscreen.png);
+	display:block;
+	position:absolute;
+	left:573px;
+	top:7px;
+	cursor:pointer;
+}
+/* 设置 */
+.set{
+	width:29px;
+	height:18px;
+	background:url(../img/set.png);
+	display:block;
+	position:absolute;
+	left:600px;
+	top:7px;
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

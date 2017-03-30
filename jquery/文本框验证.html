@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{width:500px;height:400px;margin:50px auto;border:1px solid red;text-align:center;}
+            .state1{color:#aaa;}
+            .state2{color:#000;}
+            .state3{color:red;}
+            .state4{color:green;}
+        </style>
+		<script src="jquery-1.6.2.js"></script>
+		<script>
+			$(document).ready(function(e){
+				var ok1 = false;
+				var ok2 = false;
+				 // 验证用户名
+                $('input[name="username"]').focus(function(){
+                    $(this).next().text('用户名应该为3-20位之间').removeClass('p').addClass('state2');
+                }).blur(function(){
+                    if($(this).val().length >= 3 && $(this).val().length <=12 && $(this).val()!=''){
+                        $(this).next().text('输入成功').removeClass('p').addClass('state4');
+                        ok1=true;
+                    }else{
+                        $(this).next().text('用户名应该为3-20位之间').removeClass('p').addClass('state3');
+                    }
+                     
+                });
+ 
+                //验证密码
+                $('input[name="password"]').focus(function(){
+                    $(this).next().text('密码应该为6-20位之间').removeClass('p').addClass('state2');
+                }).blur(function(){
+                    if($(this).val().length >= 6 && $(this).val().length <=20 && $(this).val()!=''){
+                        $(this).next().text('输入成功').removeClass('p').addClass('state4');
+                        ok2=true;
+                    }else{
+                        $(this).next().text('密码应该为6-20位之间').removeClass('p').addClass('state3');
+                    }
+                     
+                });
+                //提交按钮,所有验证通过方可提交
+ 
+                $('.submit').click(function(){
+                    if(ok1 && ok2){
+                        $('.submit');
+                    }else{
+                        return false;
+                    }
+                });
+                 
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<br/><br/>
+			<br/><br/>
+		用户名：<input type="text" value="" name="username"/><span class="p">&nbsp;&nbsp;请输入用户名</span>
+				
+				<br/><br/>
+		密码：&nbsp;<input type="password" value="" name="password" /><span class="p">&nbsp;&nbsp;请输入密码</span>
+				<br /><br/>
+		<input type="button" value="注册" class="submit" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+	*{margin:0;padding:0;list-style:none;}
+	.box1{margin:35px auto;width:300px;height:250px; }
+	.header{width:300px; height:200px;}
+	.header ul li b{float:right;}
+	.header ul li{line-height:30px; width:300px;height:30px;}
+	.bottom{border-bottom:#000 2px solid;width:300px;height:30px;}
+
+</style>
+	<meta charset="UTF-8">
+	<title>百度音乐全选</title>
+	<script>
+window.onload=function(){
+	var oUl=document.getElementById('oul');
+	var aLi=oUl.getElementsByTagName('li');
+	var aInput=oUl.getElementsByTagName('input');
+	var oInput=document.getElementById('btn');
+	//alert(aInput.length);
+	var arr=["#f7ffff","#fff"];
+	var str='';
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].style.background=arr[i%arr.length];
+		}
+	oInput.onclick=function(){
+	  for(var i=0;i<aInput.length;i++){
+	  	if(oInput.checked){
+			aInput[i].checked=true;
+		}else{
+			aInput[i].checked=false;
+		}
+		//点击事件1
+		aInput[i].onclick=function(){
+	 		if(aInput.checked!=true){   
+     			 oInput.checked=false;    	
+     		}else{
+          		oInput.checked=true;
+     		}
+ 		}
+
+ 	  }
+	}
+	for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover=function(){
+				str=this.style.background;
+				this.style.background='#eee';
+			}
+			aLi[i].onmouseout=function(){
+				this.style.background=str;
+				//this.style.background=arr[this.index%arr.length];
+			}
+			
+		}
+}
+</script>
+</head>
+<body>
+	<div id="box1" class="box1">
+		<div id="header" class="header">
+			<ul id="oul">
+				<li><input type="checkbox"/>独家记忆<b>陈小春</b></li>
+				<li><input type="checkbox"/>咱们屯里的人<b>黄晓明</b></li>
+				<li><input type="checkbox"/>梦的翅膀受了伤<b>陈小春</b></li>
+				<li><input type="checkbox"/>小情歌<b>苏打绿</b></li>
+				<li><input type="checkbox"/>虫儿飞<b>你在思念谁</b></li>
+				<li><input type="checkbox"/>默<b>那英</b></li>
+			</ul>
+		</div>	
+		<div id="bottom" class="bottom">
+			<input type="checkbox" id="btn"/>
+			<span>全选</span>
+			<input type="button" value="收藏"/>
+			<input type="button" value="添加"/>
+			<input type="button" value="删除"/>
+		</div>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oBtn = document.getElementById('button')
+		oBtn.onclick = function(){
+			var oT = document.getElementById('txt').value;
+			var oT1 = document.getElementById('text1').value;
+			var money = document.getElementsByTagName('div')[0];
+			
+			money.innerHTML = parseFloat(oT) * parseFloat(oT1);
+		}
+	}
+	</script>
+	<!--<script type="text/javascript" src="jquery-1.6.2.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('button').click(function(){
+			$('div').text($('#txt').val()*$('#text1').val())
+		})
+	})
+	</script>-->
+</head>
+<body>
+	<input type="text" value="" id="txt" />
+	<span>*</span>
+	<input type="text" value="" id="text1" />
+	<div>00</div>
+	<button id="button">点击我计算结果</button>
+</body>
+</html>

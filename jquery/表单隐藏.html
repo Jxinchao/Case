@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		form{width:300px;height:200px;border:1px red solid;text-align:center;margin:50px auto;}
+			.dd{display:none;}
+		</style>
+		<script src="jquery-1.6.2.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$('.c1').click(function(){
+					if($(this).attr('checked') == 'true'){
+						$('.dd').hide();
+					}else{
+						$('.dd').show();
+					}
+				});
+				$('.c2').click(function(){
+					if($(this).attr('checked') == 'true'){
+						$('.dd').show();
+					}else{
+						$('.dd').hide();
+					}
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<form>
+			用户名：<input type="text" /><br /><br />
+			密码： <input type="password" /><br /><br />
+			高级用户：<input type="radio" name="abcd" class="c1" />
+			普通用户： <input type="radio" name="abcd" class="c2" />
+			<br /><br />
+			<div class="dd">
+			  高级：<input type="radio" name="abc" class="c" />
+			  高级：<input type="radio" name="abc" class="c" />
+			  <br/><br/>
+			  高级：<input type="radio" name="abc" class="c" />
+			  高级：<input type="radio" name="abc" class="c" />
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0px;padding:0;}
+	#box{
+		width:600px;
+		height:400px;
+		border:1px solid black;
+		position:relative;
+		left:50%;
+		top:50%;
+		margin:100px 0 0 -280px;
+		-transform-origin:50% 100%;
+		transform:perspective(800px);
+		transform-style:preserve-3d ;
+	}
+	.box-1{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:50%;
+		transform-origin:0% 100%;
+		transform:rotateY(-180deg);
+		transform-style:preserve-3d;
+		z-index:0;
+	}
+	.box1Z{
+		width:300px;
+		height: 400px;
+		position:absolute;
+		top:0;
+		left: 0;
+		background:url(img/1.jpg) no-repeat;
+		transform-origin:50% 100%;
+		background-size:200% 100%; 
+		transform:translateZ(0px);
+		background-position:100% 0%;
+	}
+	.box1B{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-1px) rotateY(180deg);
+		background:url(img/2.jpg) no-repeat;
+		background-position: 0% 0%;
+		background-size:200% 100%; 
+	}
+	.box-2{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:50%;
+		transform:rotateY(0deg);
+		transform-origin:0% 100%;
+		transform-style:preserve-3d ;
+		z-index:22;
+	}
+	.box2Z{
+		width:300px;
+		height: 400px;
+		position:absolute;
+		top:0;
+		left: 0;
+		background:url(img/2.jpg) no-repeat;
+		transform-origin:0% 100%;
+		background-size:200% 100%; 
+		background-position: 100% 0%;
+		transform:translateZ(0px);
+	}
+	.box2B{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-1px) rotateY(-180deg);
+		background:url(img/3.jpg) no-repeat;
+		background-size:200% 100%; 
+	}
+	.box-3{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:50%;
+		transform-origin:0% 100%;
+		transform:rotateY(0deg);
+		transform-style:preserve-3d ;
+		z-index:20;
+	}
+	.box3Z{
+		width:300px;
+		height: 400px;
+		position:absolute;
+		top:0;
+		left: 0;
+		background:url(img/3.jpg) no-repeat;
+		transform-origin:0% 100%;
+		background-size:200% 100%; 
+		background-position: 100% 0%;
+		transform:translateZ(0px);
+	}
+	.box3B{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-1px) rotateY(180deg);
+		background:url(img/4.jpg) no-repeat;
+		background-size:200% 100%; 
+	}
+	.box-4{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:50%;
+		transform-origin:0% 100%;
+		transform:rotateY(0deg);
+		transform-style:preserve-3d ;
+		z-index:18;
+	}
+	.box4Z{
+		width:300px;
+		height: 400px;
+		position:absolute;
+		top:0;
+		left: 0;
+		background:url(img/4.jpg) no-repeat;
+		transform-origin:0% 100%;
+		background-size:200% 100%; 
+		background-position: 100% 0%;
+		transform:translateZ(0px);
+	}
+	.box4B{
+		width:300px;
+		height:400px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-1px) rotateY(180deg);
+		background:url(img/1.jpg) no-repeat;
+		background-size:200% 100%; 
+		background-position: 0% 0%;
+	}
+	</style>
+</head>
+<body>
+	<button id="btn">下一页</button>
+
+	<div id="box">
+		 <div class="box-1" id="box1">
+			<div class="box1Z"></div>
+			<div class="box1B"></div>
+		</div> 
+		  <div class="box-2" id="box2">
+			<div class="box2Z"></div>
+			<div class="box2B"></div>
+		</div>
+		<div class="box-3" id="box3">
+			<div class="box3Z"></div>
+			<div class="box3B"></div>
+		</div>
+		<div class="box-4" id="box4">
+			<div class="box4Z"></div>
+			<div class="box4B"></div>
+		</div>  
+	</div>
+
+	<script>
+		var n = 0;
+
+		btn.onclick = function(){
+			
+			if( n%4 == 0){   
+			  // 翻页2  页1在左 页3在右 页2在页1上且在页3上 页4回归  页4在页3下   
+			  setTimeout(function(){box3.style.display='block';},10)
+			    box4.style.display='none';
+                box1.style.zIndex =3;
+                box3.style.zIndex =4;
+                box2.style.zIndex =5;
+				box4.style.transform='rotateY(0deg)';
+				box2.style.transition = '1s';
+				box2.style.transform = 'rotateY(-180deg)';
+			}
+			if( n%4 == 1){  
+			   // 翻页3 页2在左 页4在右 页3在页2上且在页4上 页1回归  页1在页4下
+			    box4.style.display='block';
+			    box1.style.display='none';
+                box2.style.zIndex =5;
+                box3.style.zIndex =6;
+                box4.style.zIndex =3;               
+				box1.style.transform='rotateY(0deg)'
+				box3.style.transition = '1s';
+				box3.style.transform = 'rotateY(-180deg)';
+			}
+			if( n%4 == 2){   
+			// 翻页4 页3在左 页1在右 页4在页3上且在页1上 页2回归  页2在页1下
+			    box2.style.display='none'; 
+			    box1.style.display='block';
+                box3.style.zIndex =4;
+                box4.style.zIndex =7;
+                box1.style.zIndex =3;
+				box2.style.transform='rotateY(0deg)'
+				box4.style.transition = '1s';
+				box4.style.transform = 'rotateY(-180deg)';
+			}
+			if( n%4 == 3){   
+			//翻页1 页4在左 页2在右 页1在页4上且在页2上 页3回归  页3在页2下
+			    box3.style.display='none';
+                box2.style.display='block';
+			    box1.style.zIndex =6;
+                box2.style.zIndex =2;
+                box4.style.zIndex =3;
+				box3.style.transform='rotateY(0deg)';
+				box1.style.transition = '1s';
+				box1.style.transform = 'rotateY(-180deg)';
+				
+			}
+			n++;
+		}
+	</script>
+</body>
+</html>

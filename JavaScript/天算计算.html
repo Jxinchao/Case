@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间计算</title>
+	<script>
+	window.onload=function(){
+
+		// //dafault 相当于else
+
+		// var myTime=new Date(); //时间对象
+		// //var newTime=new Date(2016,4,14,4,05,29);
+
+
+		// var iYear=myTime.getFullYear();
+		// var iMonth=myTime.getMonth()+1;
+		// var iDate=myTime.getDate();
+		// var iDay=myTime.getDay();
+		// var iHouse=myTime.getHours();
+		// var iHmin=myTime.getMinutes();
+		// var iSec=myTime.getSeconds();
+
+
+		// // if(iDay==0) iDay='星期日';
+		// // if(iDay==1) iDay='星期一';
+		// // if(iDay==2) iDay='星期二';
+		// // if(iDay==3) iDay='星期三';
+		// // if(iDay==4) iDay='星期四';
+		// // if(iDay==5) iDay='星期五';
+		// // if(iDay==6) iDay='星期六';
+
+		// switch(iDay){
+		// 	case 0:iDay='星期日';
+		// 	break;
+		// 	case 1:iDay='星期一';
+		// 	break;
+		// 	case 2:iDay='星期二';
+		// 	break;
+		// 	case 3:iDay='星期三';
+		// 	break;
+		// 	case 4:iDay='星期四';
+		// 	break;
+		// 	case 5:iDay='星期五';
+		// 	break;
+		// 	default:oDay='星期六';
+		// }
+		// document.body.innerHTML=iYear+'年'+iMonth+'月'+iDate+'日'+iDay+iHouse+':'+iHmin+':'+iSec;
+
+
+
+
+
+
+
+
+
+
+
+function c(){
+		var NewTime=new Date(2016,3,14,4,05,29);
+		var NowTime=new Date();
+		var t=NewTime-NowTime;
+		var d=0;
+		var h=0;
+		var m=0;
+		var s=0;
+		if(t>=0){
+			d=Math.floor(t/1000/60/60/24);
+			h=Math.floor(t/1000/60/60%24);
+			m=Math.floor(t/1000/60%60);
+			s=Math.floor(t/1000%60);
+		}
+		 document.body.innerHTML=d+'天'+h+'时'+m+'分'+s+'秒';
+		// document.getElementById('t_d').innerHTML=d+'天';
+		// document.getElementById('t_h').innerHTML=h+'时';
+		// document.getElementById('t_m').innerHTML=m+'分';
+		// document.getElementById('t_s').innerHTML=s+'秒';
+	}
+	setInterval(c,0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+	</script>
+</head>
+<body>
+	<!--<span id="t_d">00</span>
+	<span id="t_h">00</span>
+	<span id="t_m">00</span>
+	<span id="t_s">00</span>-->						      				
+</body>
+</html>

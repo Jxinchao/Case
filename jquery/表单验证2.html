@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form name="abc"  method="post" action="123.html" onsubmit="return c()">
+			<input type="text" id="txt" name="abc" />
+			<input type="password" id="pass" name="user" />
+			<input type="submit" value="active"  />
+		</form>
+		<script>
+		
+				function c(){
+					var u = document.getElementById('txt').value;
+					if(u == ""){
+						alert("请输入用户名")
+						abc.txt.focus();
+						return false;
+					}
+					var p = document.getElementById("pass").value;
+					if(p == ""){
+						alert("请输入用密码")
+						document.getElementById("pass").focus();
+						return false;
+					}
+				}
+
+		</script>
+	</body>
+</html>

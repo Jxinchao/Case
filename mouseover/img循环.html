@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" style="box-sizing:border-box;">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html{}
+		*{margin:0;padding:0;}
+		div{width:300px;height:200px;background:url(p.jpg) no-repeat center;background-size:cover;position:absolute;top:50%;left:50%;margin:-100px 0 0 -100px;border:3px solid lime;}
+		.span{display:block;box-sizing:border-box;width:30px;height:20px;background:#ccc;float:left;}
+	</style>
+</head>
+<body>
+	<script>
+		var box = document.createElement('div');
+
+		document.body.appendChild(box)
+		for(var i=0;i<100;i++){
+			var oS =document.createElement('span')
+			oS.className = 'span';
+			box.appendChild(oS)
+		}
+		
+		var oSS = box.getElementsByTagName('span');
+		for(var i=0;i<oSS.length;i++){
+			oSS[i].index = i;
+			oSS[i].addEventListener('mouseover',function(){
+				oSS[this.index].style.background = 'rgba(0,0,0,0)';
+				oSS[this.index].style.border = '1px solid #fff';
+				console.log(this.index)
+			},false)
+		}
+		
+
+
+	</script>
+</body>
+</html>

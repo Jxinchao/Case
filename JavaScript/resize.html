@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>resize</title>
+	<style>
+#mt{position:absolute;background:#000;opacity:0.2;display:none;top:0;left:0;}
+#show{width:300px;height:260px;background:red;position:absolute;display:none;z-index:9999;}
+	</style>
+
+</head>
+<script>
+function getStyle(obj,arr){
+		if(getComputedStyle){
+			return getComputedStyle(obj,null)[arr];
+		}else{
+			return obj.currentStyle[arr];  //兼容IE6
+		}
+	}
+	window.onload=window.onresize=window.onscroll=function(){
+		var _mt=document.getElementById('mt');
+		var _input=document.getElementsByTagName('input');
+		var _show=document.getElementById('show');
+		var _width=document.documentElement.clientWidth||document.body.clientWidth;
+		var _height=document.documentElement.clientHeight||document.body.clientHeight;
+		var _scroll=document.documentElement.scrollTop||document.body.scrollTop;
+			function a(){
+			_show.style.display='block';
+			_show.style.left=_width/2-parseInt(getStyle(_show,'width'))/2+'px';
+			_show.style.top=_scroll+_height/2-parseInt(getStyle(_show,'height'))/2+'px';
+			with(_mt.style){
+			width=_width+'px';
+			height=_height+_scroll+'px';
+
+			}
+		}
+		_input[0].onclick=function(){
+			a();
+			_mt.style.display='block';
+			_show.style.display='block';		
+		}
+		a();
+
+		
+		
+
+		//alert(document.documentElemnt.clientWidth)
+  	 //alert(window.innerWidth)	//可视区域的宽
+
+	}
+</script>
+<body style="height:3000px;">
+<input type="button" value="haha" />
+<div id="mt"></div>
+	<div id="show">
+		<input type="button" value="关闭"/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/video.css"/>
+	<script type="text/javascript" src="video.js"></script>
+</head>
+<body>
+	<div class="Fullscreen">
+		<div class="middle"> 
+			<!-- 视频 -->
+			<div class="video">
+				<video src="1.mp4" id="video"></video>
+			</div>
+			<!-- 低栏 -->
+			<div class="low">
+				<!-- 播放暂停 -->
+				<span class="pause" id="pause"></span>
+				<!-- 进度条 -->
+				<span class="progress" id="progress">
+					<span class="schedule" id="schedule"></span>
+					<!-- 拖动小球 -->
+					<span class="rag" id="rag"></span>
+				</span>
+				<!-- 时间 -->
+				<div class="time">
+					<span id='currentTime'>00:00</span>-<span id='allTime'>00:00</span>
+				</div>
+				<!-- 音量 -->
+				<div class="volume"></div>
+				<!-- 音量条 -->
+				<span class="Yvolume" id="Yvolume">
+					<span class="Yv" id="Yv"></span>
+					<!-- 音量拖动小球 -->
+					<span class="Yrag" id="Yrag"></span>
+				</span>
+				<!-- 全屏 -->
+				<span class="fullscreen" id="fullscreen"></span>
+				<!--设置-->
+				<span class="set"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>	

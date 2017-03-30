@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时导航</title>
+	<style>
+		*{margin:0;padding:0;list-style:none;}
+		.box{width:518px;height:30px;background:url(img/bj.jpg) no-repeat; margin:30px auto;}
+		.box li{float:left;width:70px;height:30px;line-height:30px;text-align:center;color:#fff;font-size:12px;cursor:pointer;}
+		div{display:none;color:#000;margin-top:3px;position:absolute;float:left;background:url(img/bj2.jpg);font-size:12px;width:257px;line-height:32px;text-align:center;padding:0 10px;};
+		div:hover{text-decoration:underline;}
+		p{display:block;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById('box');
+		var aLi=oUl.getElementsByTagName('li');
+		var oDiv=oUl.getElementsByTagName('div');
+		var aP=oUl.getElementsByTagName('p');
+		//alert(aLi.length);
+		var timer=null;
+
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].index=i;
+				aLi[i].onmouseover=function(){
+					oDiv[this.index].style.display='block';
+				}
+				aLi[i].onmouseout=function(){	
+					clearTimeout(timer);
+					timer=setTimeout(function(){
+						for(var i=0;i<oDiv.length;i++){
+							
+							oDiv[i].style.display='none';
+						}
+					},1000);
+					
+				}	
+			}	
+	}
+	</script>
+</head>
+<body>
+	
+		<ul id="box" class="box">
+			<li>
+				<p>首页</p>
+				<div>
+					<a href="#"></a>
+				</div>
+			</li>
+			<li>
+			  <p>体检中心</p>
+				<div>
+					<a href="#">心肺查询</a>
+					<a href="#">心肺查询</a>
+					<a href="#">心肺查询</a>
+					<a href="#">心肺查询</a>
+				</div>
+			</li>
+			<li>
+			  <p>征兵报名</p>
+				<div>
+					<a href="#">往年报名</a>
+					<a href="#">往年报名</a>
+					<a href="#">往年报名</a>
+				
+				</div>
+			</li>
+			<li>
+			   <p>在线咨询</p>
+			     <div>
+					<a href="#">咨询时间</a>
+					<a href="#">往年报名</a>
+					<a href="#">往年报名</a>
+					<a href="#">往年报名</a>
+					
+				</div>
+			</li>
+			<li>
+			   <p>男兵报名</p>
+			   	<div>
+					<a href="#">男士专区</a>
+					<a href="#">男士专区</a>
+					<a href="#">男士专区</a>
+				
+				</div>
+			</li>
+			<li>
+			    <p>女兵报名</p>
+			      <div>
+					<a href="#">女兵通道</a>
+					<a href="#">女兵通道</a>
+					<a href="#">女兵通道</a>
+					<a href="#">女兵通道</a>
+				</div>
+			</li>			
+		</ul>		
+	
+</body>
+</html>

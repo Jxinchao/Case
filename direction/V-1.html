@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0px;}
+	#box{width:300px;height:300px;border:1px solid red;position:absolute;top:50%;left:50%;margin:-100px 0 0 -100px;}
+	input{position:absolute;top:50%;left:50%;margin:-130px 0 0 -130px;}
+	.span{display:block;width:60px;height:60px;float:left;text-align:center;line-height:60px;color:#fff;font-size:20px;}
+	</style>
+</head>
+<body>
+	<input type="button" value="点我" id="btn"/>
+	<div id="box">
+		
+	</div>
+
+	<script>
+
+		var arr = [[0,6,12,16,20],[0,6,12,8,4],[2,6,10,16,22],[10,6,2,8,14]],
+			oBtn = document.getElementById('box'),
+			oB = document.getElementById('btn'),
+			iNow = 0;
+
+		for(var i = 0;i < 25;i++){
+			var oS = document.createElement('span');
+			oS.className = 'span';
+			oBtn.appendChild(oS);
+		}
+
+		//初始化
+		function ints(){
+			var oSS = oBtn.getElementsByTagName('span');
+			for(var i = 0;i < oSS.length;i++){
+				oSS[i].style.background = '#fff';
+				oSS[i].innerHTML = '';
+			}
+		}
+
+		oB.addEventListener('click',function(){
+			ints();
+			var oSS = oBtn.getElementsByTagName('span');
+			for(var i = 0;i<arr[0].length;i++){
+				oSS[arr[iNow][i]].style.background = 'red';
+				oSS[arr[iNow][i]].innerHTML = i;
+			}
+			iNow++;
+			if(iNow >= 4){
+				iNow = 0;
+			}
+		},false)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="my">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<style type="text/css">
+	*{margin:0px;padding:0px;}
+	.box{width:500px;height:530px;border:3px blue solid;margin:10px auto;}
+	input{width:480px;height:60px;margin-top:20px;margin-left:10px;border-radius:5px;}
+	button{width:150px;height:50px;text-align:center;margin-top:20px;margin-left:10px;font-size:18px;}
+	</style>
+</head>
+<body>
+	<div ng-controller="con">
+		<div class="box">
+			<input type="text" ng-model="cli" />
+			<br/>
+			<button ng-repeat="a in number" ng-click="fn(a)">{{a}}</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var app = angular.module('my',[])
+		app.controller('con',function($scope){
+			$scope.number=['退格','清除','1','2','3','4','5','6','7','8','9','0','+','-','*','/','.','=']
+			$scope.cli="";
+			$scope.fn = function(n){
+				if(n == '='){
+					$scope.cli = eval($scope.cli)
+				}else if(n == '清除'){
+					$scope.cli = ''
+				}else if(n == '退格'){
+					$scope.cli = String($scope.cli)
+					$scope.cli = $scope.cli.slice(0,$scope.cli.length-1)
+				}else{
+					$scope.cli+=n
+				}
+			}
+		})
+	</script>
+</body>
+</html>

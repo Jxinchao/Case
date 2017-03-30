@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>	
+<meta charset="UTF-8">
+	<title></title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.all{
+		position:fixed;
+		width:100%;
+		height:100%;
+		background:#000;
+		display:flex;
+	}
+	.box{
+		width:302px;
+		height:302px;
+		margin:auto;
+		position:relative;
+		-webkit-transform-style:preserve-3d;
+		-webkit-animation:donghua 9s linear infinite;
+	}
+	@-webkit-keyframes donghua{
+		0%{-webkit-transform:rotateX(30deg) rotateY(0deg);}
+		100%{-webkit-transform:rotateX(30deg) rotateY(360deg);}
+	}
+	.box:hover>p{
+		border-color:red;
+	}
+	.box>p{
+		width:300px;
+		height:300px;
+		position:absolute;
+		border:1px solid #fff;
+		top:0;
+		left:0;
+		border-radius:50%;
+	}
+	.box>p:nth-child(7){
+		-webkit-transform:rotateY(20deg);
+	}
+	.box>p:nth-child(8){
+		-webkit-transform:rotateY(40deg);
+	}
+	.box>p:nth-child(9){
+		-webkit-transform:rotateY(60deg);
+	}
+	.box>p:nth-child(10){
+		-webkit-transform:rotateY(80deg);
+	}
+	.box>p:nth-child(11){
+		-webkit-transform:rotateY(100deg);
+	}
+	.box>p:nth-child(12){
+		-webkit-transform:rotateY(120deg);
+	}
+	.box>p:nth-child(13){
+		-webkit-transform:rotateY(140deg);
+	}
+	.box>p:nth-child(14){
+		-webkit-transform:rotateY(160deg);
+	}
+	.box>p:nth-child(15){
+		-webkit-transform:rotateY(180deg);
+	}
+	.box>span{
+		display:block;
+		width:300px;
+		height:300px;
+		border:1px solid #fff;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.box>span:nth-child(1){
+		-webkit-transform:translateZ(151px);
+	}
+	.box>span:nth-child(2){
+		-webkit-transform:translateZ(-151px);
+	}
+	.box>span:nth-child(3){
+		-webkit-transform:rotateY(90deg) translateZ(-151px);
+	}
+	.box>span:nth-child(4){
+		-webkit-transform:rotateY(90deg) translateZ(151px);
+	}
+	.box>span:nth-child(5){
+		-webkit-transform:rotateX(90deg) translateZ(-151px);
+	}
+	.box>span:nth-child(6){
+		-webkit-transform:rotateX(90deg) translateZ(151px);
+	}
+</style>
+</head>
+<body>
+<div class="all">
+	<div class="box">
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	  <span></span>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+</div>
+</body>
+</html>

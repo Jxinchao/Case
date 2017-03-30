@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	#box{
+		width:250px;
+		height:313px;
+		position:relative;
+		top:50%;
+		left:50%;
+		margin:150px 0 0 -150px;
+		transform:perspective(800px);
+		transform-style:preserve-3d;
+		transition:1s;
+	}
+	.box1{
+		width:250px;
+		transition:1s;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:0% 100%;
+		background:url(img/front.png) no-repeat;
+		transform:translateZ(10px);
+	}
+	.box2{
+		width:250px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:url(img/back.png) no-repeat;
+		transform:translateZ(-10px);
+
+	}
+	.box3{
+		width:20px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:url(img/side.png) no-repeat;
+		background-size:cover;
+		transform:rotateY(90deg) translateZ(-10px);
+	}
+	.box4{
+		width:18px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:#fff;
+		transform:rotateY(90deg) translateZ(240px);
+	}
+	.show{
+		width:248px;
+		height:313px;
+		position:absolute;
+		border-right:1px solid #000;
+		text-align:center;
+		line-height:600px;
+		top:0;
+		left:0;
+		background:url(img/1.jpg);
+		background-size:cover;
+		transition:1s;
+		transform-origin:2% 100%;
+	}
+	</style>
+</head>
+<body>
+	<button id="btn1">翻转书皮</button>
+	<button id="btn2">打开书本</button>
+	<button id="btn3">下一页</button>
+	<div id="box">
+		<div class="box1" id="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<!-- <div class="box4"></div> -->
+	</div>
+
+	<script>
+		var n = 0,
+			iNow = 9.5,  //translateZ 初始位置
+			baff = true;
+		//点击翻转
+		btn1.onclick = function(){
+			if(baff){
+				box.style.transform = 'perspective(800px) rotateY(-180deg)';
+				baff = false;
+			}else{
+				box.style.transform = 'perspective(800px) rotateY(0deg)';
+				baff = true;
+			}
+			
+		}
+		//点击打开书
+		btn2.onclick = function(){
+			box1.style.transform = 'perspective(1000px) rotateY(-178deg)';
+		}
+		
+		//创建书页
+		for(var i=0;i<38;i++){
+			iNow -= 0.5;
+			var aDiv = document.createElement('div');
+			aDiv.className = 'show';
+			aDiv.style.transform = 'translateZ('+iNow+'px)';
+			aDiv.innerHTML = i+1;
+			box.appendChild(aDiv)
+		};
+
+		//获取书页
+		var oDiv = document.querySelectorAll('.show'),
+			a = 178;
+
+		btn3.onclick = function(){
+			a -= 2;
+			if(a <= 102)return;
+			console.log(a)
+			box1.style.transform = 'perspective(1000px) rotateY(-176deg)';
+			oDiv[n].style.transform = 'rotateY('+(-a)+'deg)';
+			n++;
+			//oDiv[36].style.transform = 'rotateY(-174deg)';
+			if(n == oDiv.length)n=0;
+			
+		}
+
+	</script>
+</body>
+</html>

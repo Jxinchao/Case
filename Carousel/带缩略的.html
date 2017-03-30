@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{ margin:0; padding:0; list-style:none;}
+#div1{ width:780px; height:400px; position:absolute; left:50%; top:50%; margin-left:-390px; margin-top:-200px; border:1px solid black;overflow:hidden;}
+#div1 .sMove{ height:358px; position:absolute; top:0; left:0;}
+#div1 .sMove div{ width:780px; height:358px; float:left;}
+#div1 .nav{ width:780px; height:42px; position:absolute; left:0; bottom:0; background:#ccc}
+#div1 .nav ul{ width:162px; height:30px; float:right; position:relative; margin-top:5px;} 
+#div1 .nav ul li{ width:38px; height:28px; float:left; border:1px solid black; cursor:pointer; margin-left:8px;}
+#div1 .nav ul div{ width:38px; height:28px; border:1px solid #39b5e7; position:absolute; left:8px; top:0; cursor:pointer;}
+#div1 .sLast{ width:50px; height:50px; background:black; position:absolute; left:0; top:50%; margin-top:-25px; text-align:center; font:20px/50px Arial; color:white; cursor:pointer;}
+#div1 .sLast::selection{
+    background:black;
+}
+#div1 .sPrav{ width:50px; height:50px; background:black; position:absolute; right:0; top:50%; margin-top:-25px; text-align:center; font:20px/50px Arial; color:white; cursor:pointer;}
+#div1 .sPrav::selection{
+    background:black;
+}
+</style>
+
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="div1">
+	<div class="sMove">
+    	<div style="background:yellow"></div>
+        <div style="background:blue"></div>
+        <div style="background:green"></div>
+    </div>
+    <div class="nav">
+    	<ul> 
+            <div></div>
+        	<li style="background:yellow"></li>
+            <li style="background:blue"></li>
+            <li style="background:green"></li>
+         
+        </ul>
+    </div>
+    <div class="sLast">左</div>
+    <div class="sPrav">右</div>
+</div>
+
+    <script>
+        var oDiv = document.getElementById('div1'),
+            sMove = oDiv.children[0],
+            aDiv = sMove.getElementsByTagName('div'),
+            oNav = oDiv.children[1],
+            aLi = oNav.getElementsByTagName('li'),
+            nDiv = oNav.getElementsByTagName('div')[0],
+            sLast = oDiv.children[2],
+            sPrav = oDiv.children[3],
+            tim = null,
+            speed = 0,
+            timer = null,
+            n = 0;
+
+        //动态获取总宽
+        sMove.style.width = aDiv[0].offsetWidth * aDiv.length +'px';
+
+        //封装函数调用时候方便使用
+        function start(L){
+            clearInterval(tim);
+            tim=setInterval(function(){
+                speed=(sMove.offsetLeft+L)/10;
+                speed>0?speed=Math.ceil(speed):speed=Math.floor(speed);
+                if(sMove.offset==L){
+                    clearInterval(tim);
+                }else{
+                    sMove.style.left=sMove.offsetLeft-speed+'px';
+                }
+            },25)
+        }
+
+        
+        //点击事件
+        for(var i = 0; i < aLi.length;i++){
+            aLi[i].index = i;  
+            aLi[i].onmouseover = function(){
+               for(var i = 0; i < aLi.length;i++){
+                    start(aDiv[0].offsetWidth * this.index);
+               }
+                n = this.index;
+                nDiv.style.transition = '0.5s all ease';
+                nDiv.style.left = aLi[n].offsetLeft + 'px';
+            }
+        }
+
+
+        //左边点击
+        sLast.onclick = function(){
+            n--;
+            if(n==-1)n = aDiv.length-1
+            start(aDiv[0].offsetWidth * n)
+            nDiv.style.transition = '1s all ease';
+            nDiv.style.left = aLi[n].offsetLeft + 'px';
+
+        }
+        sPrav.onclick = function(){
+            n++;
+            if(n > aDiv.length-1)n=0;
+            start(aDiv[0].offsetWidth * n)
+            nDiv.style.transition = '1s all ease';
+            nDiv.style.left = aLi[n].offsetLeft + 'px';
+        }
+
+
+
+        //函数封装执行定时器
+       function fn(){
+            if(n > aDiv.length-1)n=0;
+            start(aDiv[0].offsetWidth * n);    
+            nDiv.style.transition = '1s all ease';
+            nDiv.style.left = aLi[n].offsetLeft + 'px';
+            n++;
+       };
+
+       //启动定时器
+           timer = setInterval(fn,2000)
+        //鼠标移入清空定时器
+           oDiv.onmouseover = function(){
+                clearInterval(timer);
+           };
+        //鼠标移出启动定时器
+            oDiv.onmouseout = function(){
+                clearInterval(timer);
+                timer = setInterval(fn,2000)
+           }
+    </script>
+</body>
+</html>

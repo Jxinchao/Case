@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			.btn{
+				display:flex;
+				width:100%;
+				height:100%;
+				position:fixed;
+			}
+			.box{
+				width:300px;
+				height:300px;
+				margin:auto;
+				position:relative;
+				transform-style:preserve-3d;
+				transform:rotateX(20deg) rotateY(20deg);
+				animation:one 5s linear infinite;
+			}
+			body{
+				background:black;
+			}
+			.box div{
+				width:300px;
+				height:300px;
+				/*border:1px solid red;*/
+				/*background:yellow;*/
+				position:absolute;
+				color:#fff;
+				text-align:center;
+				line-height:300px;
+			}
+			.f_1{
+				transform:translateZ(150px);
+				border:1px solid red;
+			}
+			.f_2{
+				transform:translateZ(-150px);
+				border:1px solid yellow;
+			}
+			.f_3{
+				transform:rotateY(90deg) translateZ(150px);
+				border:1px solid blue;
+			}
+			.f_4{
+				transform:rotateY(-90deg) translateZ(150px);
+				border:1px solid green;
+			}
+			.f_5{
+				transform:rotateX(-90deg) translateZ(150px);
+				border:1px solid #fff;
+			}
+			.f_6{
+				transform:rotateX(90deg) translateZ(150px);
+				border:1px solid #006699;
+			}
+			.box p{
+				border-radius:50%;
+				width:300px;
+				height:300px;
+				position:absolute;
+				border:1px solid red;
+			}
+			.box .r_1{
+				transform: rotateY(20deg);
+			}
+			.box .r_2{
+				transform: rotateY(40deg);
+				
+			}
+			.box .r_3{
+				transform: rotateY(60deg);
+				
+			}
+			.box .r_4{
+				transform: rotateY(80deg);
+				
+			}
+			.box .r_5{
+				transform: rotateY(100deg);
+				
+			}
+			.box .r_6{
+				transform: rotateY(120deg);
+				
+			}
+			.box .r_7{
+				transform: rotateY(140deg);
+				
+			}
+			.box .r_8{
+				transform: rotateY(160deg);
+				
+			}.box .r_9{
+				transform: rotateY(180deg);
+				
+			}
+			.box:hover div{
+				box-shadow:0 0 50px 2px blue;
+			}
+			.box:hover p{
+				box-shadow:0 0 50px 2px blue;
+			}
+			@keyframes one{
+				0%{transform:rotateX(20deg) rotateY(0deg);}
+				100%{transform:rotateX(20deg) rotateY(360deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="btn">
+		<div class="box">
+			<div class="f_1">正面</div>
+			<div class="f_2">背面</div>
+			<div class="f_3">左面</div>
+			<div class="f_4">右面</div>
+			<div class="f_5">上面</div>
+			<div class="f_6">下面</div>
+			<p class="r_1"></p>
+			<p class="r_2"></p>
+			<p class="r_3"></p>
+			<p class="r_4"></p>
+			<p class="r_5"></p>
+			<p class="r_6"></p>
+			<p class="r_7"></p>
+			<p class="r_8"></p>
+			<p class="r_9"></p>
+		</div>
+		</div>
+	</body>
+</html>

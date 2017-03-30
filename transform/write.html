@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	#box{
+		width:250px;
+		height:313px;
+		position:relative;
+		top:50%;
+		left:50%;
+		margin:150px 0 0 -150px;
+		transform-style:preserve-3d;
+	}
+	.box1{
+		width:250px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:url(img/front.png) no-repeat;
+		transform:translateZ(10px);
+	}
+	.box2{
+		width:250px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:url(img/back.png) no-repeat;
+		transform:translateZ(-10px) ;
+	}
+	.box3{
+		width:20px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:url(img/side.png) no-repeat;
+		background-size:cover;
+		transform:rotateY(90deg) translateZ(-10px);
+	}
+	.box4{
+		width:18px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		background:#fff;
+		transform:rotateY(90deg) translateZ(240px);
+	}
+	.show{
+		width:250px;
+		height:313px;
+		position:absolute;
+		top:0;
+		left:0;
+		background:#ccc;
+		transform-origin:50% 100%;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</div>
+
+	<script>
+		var n = 0,
+			iNow = -9.5;  //translateZ 初始位置
+		setInterval(function(){
+			n += 0.3;
+			box.style.transform = 'perspective(800px) rotateY('+n+'deg)';
+		})
+
+		for(var i=0;i<38;i++){
+			iNow +=0.5;
+			var aDiv = document.createElement('div');
+			aDiv.className = 'show';
+			aDiv.style.transform = 'translateZ('+iNow+'px)';
+			box.appendChild(aDiv)
+		};
+	</script>
+</body>
+</html>

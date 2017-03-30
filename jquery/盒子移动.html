@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box{width:200px;height:200px;background:yellow;position:absolute;}
+			body{text-align:center;}
+		</style>
+		<script src="jquery-1.6.2.js"></script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					var oWidth = parseFloat($("#txt1").val()+"px")
+					var oHeight = parseFloat($("#txt2").val()+"px")
+					$("#box").animate({"left":oWidth},"slow")
+					$("#box").animate({"top":oHeight},"slow")
+				})
+			})
+		</script>
+	</head>
+	<body>
+		X：<input type="text" id="txt1"  /> Y：<input type="text" id="txt2" />
+		<button>移动</button>
+		<div id="box"></div>
+	</body>
+</html>

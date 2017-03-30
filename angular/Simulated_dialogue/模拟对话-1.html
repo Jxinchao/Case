@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" ng-app="my">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script src="jquery-1.6.2.js"></script>
+	<style type="text/css">
+	.box{width:500px;height:400px;border:2px solid yellow;overflow-x:hidden;margin:0 auto;}
+	.left{text-align:left;}
+	.right{text-align:right;}
+	</style>
+</head>
+<body style="text-align:center">
+	<hi>
+
+	<div class="box">
+	</div>
+
+	<br/><br/>
+	<input type="text" ng-model="_left" />
+	<button ng-click="fn()">发送</button>
+	<input type="text" ng-model="_right" />
+	<button ng-click="fn1()">发送</button>
+
+	</hi>
+	<script type="text/javascript">
+		var app = angular.module('my',[]);
+		app.directive('hi',function(){
+			return {
+			link:function(scope){
+				scope._left = '';
+				scope._right = '';
+			scope.fn = function(){
+				if(scope._left == ''){
+					scope._left = require;
+				}else{
+				$('.box').append('<p class="left">'+'左君=>&nbsp;&nbsp;'+scope._left+'</p>')
+		 		scope._left = ''; 
+		 		}	
+			}
+			scope.fn1 = function(){
+				if(scope._right == ''){
+					scope._right = require;
+				}else{
+				$(".box").append('<p class="right">'+scope._right+'&nbsp;&nbsp;<=右君'+'</p>')
+				scope._right = '';
+				}
+			}
+			}
+
+			}
+		})
+	</script>
+</body>
+</html>

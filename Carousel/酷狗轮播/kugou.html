@@ -1,0 +1,273 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+    <style type="text/css">
+*{margin: 0;padding: 0;list-style: none;}
+body,html{height: 100%;}
+body{
+	display: -webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+}
+ul{
+	width: 600px;height: 400px;background: #ccc;
+	position: relative;overflow: hidden;
+}
+ul> li{
+	transition:0.3s;
+	width: 300px;height: 150px;
+	position: absolute;
+}
+ul> li >img{
+	width: 100%;height: 100%;
+}
+ul> li.p4{
+	position: absolute;
+	left: 50%;top: 50%;
+	width: 400px;height: 200px;margin:-100px 0 0 -200px;
+	z-index: 5;
+}
+ul> li.p3{
+	position: absolute;left: 0;top: 50%;
+	width: 300px;height: 150px;margin-top: -75px;
+	z-index: 4;
+	-webkit-filter:blur(3px) grayscale(1);
+}
+ul> li.p5{
+	position: absolute;right:0;top: 50%;
+	width: 300px;height: 150px;margin-top: -75px;
+	z-index: 4;
+	-webkit-filter:blur(3px) grayscale(1);
+}
+
+ul> li.p2{
+	position: absolute;left: -100px;top: 50%;
+	width: 200px;height: 125px;margin-top: -75px;
+	z-index: 3;
+	opacity: 0;
+}
+ul> li.p1{
+	position: absolute;left: -200px;top: 50%;
+	width: 200px;height: 125px;margin-top: -75px;
+	z-index: 3;
+	opacity: 0;
+}
+
+ul> li.p6{
+	position: absolute;right: -100px;top: 50%;
+	width: 200px;height: 125px;margin-top: -75px;
+	z-index: 3;
+	opacity: 0;
+}
+ul> li.p7{
+	position: absolute;right: -200px;top: 50%;
+	width: 200px;height: 125px;margin-top: -75px;
+	z-index: 3;
+	opacity: 0;
+}
+.left{
+	width: 50px;height: 50px;background: rgba(255,255,255,0.8);
+	position: absolute;left: 0;top: 50%;margin-top: -25px;z-index: 9;
+	cursor: pointer;
+}
+.right{
+	width: 50px;height: 50px;background: rgba(255,255,255,0.8);
+	position: absolute;right: 0;top: 50%;margin-top: -25px;z-index: 9;
+	cursor: pointer;
+}
+ol{
+	width: 100px;height: 30px;
+	background: white;position: absolute;bottom: 20px;margin-left: -50px;
+	left: 50%;
+	z-index: 8;
+}
+
+ol > li{
+	width: 10px;height: 10px;margin-top: 10px;border-radius: 50%;
+	background:#ccc;float: left;margin-left: 3.5px;
+	transition:0.3s;
+
+}
+ol > li.active{
+	background: black;
+}
+
+    </style>
+</head>
+<body>
+<ul id='ul'>
+	<li class='p1'><img src="1.jpg"></li>
+	<li class='p2'><img src="2.jpg"></li>
+	<li class='p3'><img src="3.jpg"></li>
+	<li class='p4'><img src="4.jpg"></li>
+	<li class='p5'><img src="5.jpg"></li>
+	<li class='p6'><img src="7.jpg"></li>
+	<li class='p7'><img src="8.jpg"></li>
+	<div class='left'></div>
+	<div class='right'></div>
+	<ol id='ol'>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class='active'></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ol>
+</ul>
+<script type="text/javascript">
+	
+	var index = 3;
+	var allLi = document.querySelectorAll('#ul > li');
+	var leftNode = document.querySelector('.left');
+	var rightNode = document.querySelector('.right');
+	var allOlLi = ol.getElementsByTagName('li');
+
+	var arr = [];
+	for(var i = 0;i < allLi.length;i++){
+		arr.push(allLi[i].className);
+	};
+
+	leftNode['onclick'] = function(){
+		index--;
+		if(index == -1)index = allOlLi.length-1;
+		arr.push(arr.shift());
+		for(var i = 0; i < allLi.length;i++){
+			allOlLi[i].className = '';
+			allLi[i].className = arr[i];
+		}
+		allOlLi[index].className = 'active';
+	};
+	rightNode['onclick'] = function(){
+		arr.unshift(arr.pop());
+		index++;
+		if(index == allOlLi.length)index = 0;
+		for(var i = 0; i < allLi.length;i++){
+			allOlLi[i].className = '';
+			allLi[i].className = arr[i];
+		}
+
+		console.log(arr)
+		allOlLi[index].className = 'active';
+	};
+	var t = null;
+	clearInterval(t);
+	t = setInterval(rightNode['onclick'],1000);
+
+	ul.onmouseover = function(){
+		clearInterval(t);
+	};
+	ul.onmouseout = function(){
+		clearInterval(t);
+		t = setInterval(rightNode['onclick'],1000);
+	}
+
+
+	for(var i = 0;i < allOlLi.length;i++){
+		allOlLi[i].index = i;
+		allOlLi[i].onclick = function(){
+
+			for(var i = 0;i < allOlLi.length;i++){
+				allOlLi[i].className = ''
+			};
+			allOlLi[this.index].className = 'active';
+			
+			//allLi[3].className = '';
+
+			//this.index =5;
+			//0 - 4
+			//6 - 7
+			/*
+			for(var i = 0;i< allLi.length;i++){
+				allLi[i].className = ''
+			}
+			*/
+			
+			for(var i = this.index-1,c=3;i >= 0;i--,c--){
+
+				if(c > 0){
+					//console.log(c)
+					allLi[i].className = 'p'+c;
+				}
+				else{
+					//console.log(c+allLi.length,i)
+					allLi[i].className = 'p'+(c+allLi.length);
+				}
+				//console.log(c+7%7)
+
+				/*
+				console.log(i)
+				if(i-3>0){
+					//console.log(i,'p'+(i-3))
+					allLi[i-1].className = 'p'+(i-3)
+				}
+				
+				else{
+					//console.log('p'+((i-3)+allLi.length))
+					allLi[i-1].className = 'p'+((i-3)+allLi.length)
+				}
+				*/
+				
+				//console.log(i-3);
+				//allLi[i].className = 
+			}
+			
+			for(var i = this.index + 1,c = 5;i < allLi.length;i++,c++){
+				//console.log(c)
+				//allLi[i].className= ''
+
+				if(c<=7){
+					//console.log(c)
+					allLi[i].className = 'p'+c;
+				}
+				
+				else{
+					allLi[i].className = 'p'+(c%allLi.length);
+				}
+				
+
+				//console.log(i)
+				//if(i == 3)continue;
+				//console.log(i)
+				//allLi[i].className = 'p'+(i+1);
+
+			}
+			
+			
+			//allLi - > 1 - 7
+
+			allLi[this.index].className = 'p4';
+
+			index = this.index;
+			//7
+
+			//p4 -> 中间 o
+			//p3 -> 左边
+			//p5 -> 右边
+
+			//点哪个 哪个就是P4 
+			//之前的重排一边
+
+			/*
+			arr.splice(3,0,arr.splice(this.index,1)[0]);
+			;
+			console.log(arr)
+			for(var i = 0; i < allLi.length;i++){
+				//allOlLi[i].className = '';
+				allLi[i].className = arr[i];
+			}
+			*/
+
+
+		}
+	}
+
+	//arr[parseInt(arr.length/2)] = allLi[this.index].className;
+
+	//console.log(arr);
+
+</script>
+</body>
+</html>

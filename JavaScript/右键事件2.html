@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{width:40px;border:1px solid #000;display:none;position:absolute;}
+	*{margin:0px;padding:0px;}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+	document.oncontextmenu=function(ev){	
+		var ev=ev||event;
+		
+		oDiv.style.left=ev.clientX+'px';
+		oDiv.style.top=ev.clientY+'px';
+		oDiv.style.display='block';
+		return false
+	}
+	document.onclick=function(){
+		oDiv.style.display='';
+	}
+
+	oDiv.onclick=function(ev){
+		var ev=ev||event;
+		ev.cancelBubble=true;
+	}
+
+
+	var A=oDiv.getElementsByTagName('a');
+	for(var i=0;i<A.length;i++){
+		A.onclick=function(){
+			oDiv.style.display='none';
+		}
+	}
+
+
+		var b=12;
+
+
+
+		// document.addEventListener('DOMMouseScroll',fn,true);
+		//  document.onmousewheel=function(ev){}
+
+		//鼠标事件滚轮事件兼容
+		 if(document.addEventListener){
+		 	document.addEventListener('DOMMouseScroll',fn,true);
+		 }else{
+		 	 document.onmousewheel=fn;
+		 }
+
+		 //属性兼容
+		 var a=true;
+		function fn(ev){
+			var ev=ev||event;
+		if(ev.wheelDelta>0){
+			if(ev.wheelDelta>0){a=true;}else{a=false};
+		}else{
+			if(ev.detail<0){a=true}else{a=false};
+		}
+			if(a){
+				b=b+2;
+				oDiv.style.width=oDiv.offsetWidth+10+'px';
+				oDiv.style.height=oDiv.offsetHeight+10+'px';
+				oDiv.style.fontSize=b+'px'
+			}else{
+				b=b-2;
+				oDiv.style.width=oDiv.offsetWidth-10+'px';
+				oDiv.style.height=oDiv.offsetHeight-10+'px';
+				oDiv.style.fontSize=b+'px'
+
+			}
+				// if(ev.wheelDelta){
+				// 	alert(ev.wheelDelta);
+				// }else{
+				// 	alert(ev.detail);
+				// }
+		}
+
+
+
+		// document.onmousewheel=function(ev){
+		// 	var ev=ev||event;
+		// 	if(ev.wheelDelta>0){
+		// 		a=a+2;
+		// 		oDiv.style.width=oDiv.offsetWidth+10+'px';
+		// 		oDiv.style.height=oDiv.offsetHeight+10+'px';
+		// 		oDiv.style.fontSize=a+'px'
+		// 	}else{
+		// 		a=a-2;
+		// 		oDiv.style.width=oDiv.offsetWidth-10+'px';
+		// 		oDiv.style.height=oDiv.offsetHeight-10+'px';
+		// 		oDiv.style.fontSize=a+'px'
+		// 	}
+		// }
+
+
+
+
+
+
+
+	}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li><a href="a.rar">下载</a></li>
+			<li><a href="#">下载</a></li>
+			<li><a href="#">下载</a></li>
+			<li><a href="#">下载</a></li>
+			<li><a href="#">下载</a></li>
+		</ul>
+	</div>
+</body>
+</html>

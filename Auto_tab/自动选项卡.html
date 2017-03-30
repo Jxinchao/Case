@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+.active{ background:yellow}
+#div1{ float:left}
+#div1 div{ width:100px; height:100px; border:1px solid  black; background:#CCC; display:none;}
+.show{display:block;}
+</style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="div1">
+  <a href="javascript:;" id="_left">左</a>
+  <a href="javascript:;" id="_right">右</a>
+  <input type="button"  value="1" class="active"/>
+  <input type="button"  value="2"/>
+  <input type="button"  value="3"/>
+<div style="display:block;">1</div>
+<div>2</div>
+<div>3</div>
+</div>
+
+	<script>
+	  	var oBtn = document.getElementsByTagName('input'),
+	  		oDiv1 = document.getElementById('div1'),
+	  		oDiv = oDiv1.getElementsByTagName('div'),
+	  		iNow = 0,
+	  		timer = null;
+	  	for(var i = 0;i<oBtn.length;i++){
+	  		oBtn[i].addEventListener('click',fn,false);
+	  	}
+
+	  	//点击选项卡
+	  	function fn(){
+	  		for(var i = 0;i<oBtn.length;i++){
+	  			oBtn[i].index = i;
+	  			oBtn[i].className = '';
+	  			oDiv[i].style.display = '';
+	  		}
+	  		iNow = this.index;
+	  		oBtn[this.index].className = 'active';
+	  		oDiv[this.index].style.display = 'block';
+	  	}
+
+	  	//左边
+	  	_left.addEventListener('click',oLeft,false);
+
+	  	function oLeft(){
+	  		iNow--;
+	  		if(iNow == -1){
+	  			iNow = oBtn.length -1;
+	  		}
+	  		tab()
+	  	}
+	  	//右边
+	  	_right.addEventListener('click',oRight,false);
+
+	  	function oRight(){
+	  		iNow++;
+	  		if(iNow == oBtn.length){
+	  			iNow = 0;
+	  		}
+	  		tab()
+	  	}
+
+	  	//定时器
+	  	timer = setInterval(oRight,1000);
+	  	oDiv1.addEventListener('mouseover',function(){
+	  		clearInterval(timer);
+	  	},false)
+	  	oDiv1.addEventListener('mouseout',function(){
+	  		timer = setInterval(oRight,1000)
+	  	},false)
+	  	function tab(){
+	  		for(var i=0;i<oBtn.length;i++){
+	  			oBtn[i].className = '';
+	  			oDiv[i].style.display = '';
+	  		}
+	  		oBtn[iNow].className = 'active';
+	  		oDiv[iNow].style.display = 'block';
+	  	}
+	</script>
+</body>
+</html>

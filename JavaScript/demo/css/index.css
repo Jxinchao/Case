@@ -1,0 +1,194 @@
+html,
+body,
+div,
+span,
+p,
+h1,
+h2,
+h3,
+b,
+i,
+a,
+em,
+input,
+form,
+img,
+ul,
+li,
+dl,
+dt {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font-style: normal;
+  box-sizing: border-box;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: inline-block;
+}
+html {
+  font-size: 3.125vw;
+  font-family: "微软雅黑";
+}
+.clear {
+  display: block;
+  *zoom: 1;
+}
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  clear: both;
+}
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.load {
+  border-radius: 50%;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: 20px auto;
+  position: relative;
+  width: 8em;
+  height: 8em;
+  box-shadow: inset 0 0 0 1em red;
+}
+.load:before,
+.load:after {
+  border-radius: 50%;
+  position: absolute;
+  content: '';
+  width: 4.2em;
+  height: 8.2em;
+  background: #fff;
+  border-radius: 0;
+}
+.load:before {
+  border-radius: 8.2em 0 0 8.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 4.2em 4.1em;
+  transform-origin: 4.2em 4.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+.load:after {
+  border-radius: 0 8.2em 8.2em 0;
+  top: -0.1em;
+  left: 4.1em;
+  -webkit-transform-origin: 0 4.1em;
+  transform-origin: 0 4.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+header {
+  width: 100%;
+  height: 3.1rem;
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+}
+header span {
+  width: 3.1rem;
+  height: 3.1rem;
+  text-align: center;
+  line-height: 3.1rem;
+  font-size: 1.6rem;
+  color: #454c56;
+  font-weight: bold;
+}
+header input {
+  margin-top: 0.3rem;
+  padding-left: 0.4rem;
+  width: 18.3rem;
+  height: 2.3rem;
+  border-radius: 0.3rem;
+  background: #eeeeee;
+}
+header i {
+  flex: 1;
+  margin-top: 0.3rem;
+  margin-left: 1.6rem;
+  width: 2.1rem;
+  height: 2rem;
+  font-size: 2.1rem;
+  color: #5e5e5e;
+}
+header .i {
+  font-size: 1.4rem;
+}
+header .i span {
+  display: block;
+  font-size: 0.7rem;
+  width: 2.1rem;
+  text-align: center;
+  margin-top: -1rem;
+  font-weight: none;
+}
+nav {
+  width: 100%;
+  height: 3.2rem;
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+}
+nav p {
+  flex: 1;
+  text-align: center;
+  line-height: 3.2rem;
+  font-size: 1.3rem;
+}
+.section {
+  width: 100%;
+  height: 8.7rem;
+  border-bottom: 2px solid #f3f3f3;
+  display: flex;
+}
+.section img {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  width: 7.8rem;
+  height: 7.7rem;
+}
+.section div {
+  margin-left: 0.8rem;
+  width: 26rem;
+  height: 8.7rem;
+  background: url(../img/gwc.png) no-repeat;
+  background-position: 13rem 5rem;
+}
+.section div span {
+  font-size: 1rem;
+  color: #737074;
+  line-height: 1.8rem;
+}
+.section div span s {
+  text-decoration: none;
+}
+/*# sourceMappingURL=index.css.map */

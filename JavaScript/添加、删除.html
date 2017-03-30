@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加删除</title>
+</head>
+<body>
+	<div id="div2">
+		<li>
+			<span>生活</span>我又车了<a href="javascript:;">删除</a>
+		</li>
+	</div>
+	<input type="text"/>
+	<br/><textarea rows="4" cols="40"></textarea>
+	<br/><input type="button" value="提交"/>
+</body>
+<script>
+	window.onload=function(){
+		var tim=new Date();
+		var odiv2=document.getElementById('div2');
+		var input=document.getElementsByTagName('input');
+		var textarea=document.getElementsByTagName('textarea')[0];
+		input[1].onclick=function(){
+			var li=document.createElement('li');   //createElement  创建一个子节点
+			var sp=document.createElement('span');
+			var _a=document.createElement('a');
+			var _b=document.createElement('b');
+			var yue=tim.getMonth()+1;
+			var R=tim.getDate();
+			var H=tim.getHours();
+			var F=tim.getMinutes();
+			var M=tim.getSeconds();
+			_b.innerHTML=tim.getFullYear()+"年"+yue+'月'+R+'日'+H+'时'+F+'分'+M+'秒';
+			_a.innerHTML='删除';
+			_a.href='javascript:;';
+			sp.innerHTML=input[0].value;
+			li.appendChild(sp);    //appendChild()   添加一个子节点
+			li.innerHTML+=textarea.value;
+			li.appendChild(_b);
+			li.appendChild(_a);
+			odiv2.appendChild(li);
+
+			odiv2.insertBefore(li,odiv2.firstChild)   //  插入新节点在节点前  注意节点顺序
+
+			input[0].value='';
+			textarea.value='';
+			var arr=[];
+			for(var i=0;i<odiv2.children.length;i++){
+				var A=odiv2.children[i].getElementsByTagName('a')[0];
+				A.onclick=function(){
+					this.parentNode.parentNode.removeChild(this.parentNode);  //removeChild(); 删除节点       parentNode 找父级元素  上一级
+					arr=this.parentNode.innerHTML+','+this.previousElementSibling.innerHTML; //供给后端接口
+				}
+
+			}
+
+		}
+
+
+}
+</script>
+</html>

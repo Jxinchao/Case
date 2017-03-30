@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function a(){}
+	a.prototype.name = 'jack';  //使用原型来添加属性
+	a.prototype.age = 25;
+	a.prototype.getName = function(){
+		return this.name; 
+	}
+	var per1 = new a();
+	alert(per1.getName())  //jack
+	var per2 = new a();
+	alert(per1.getName === per2.getName)   //true 共享一个原型对象的方法
+	</script>
+</body>
+</html>

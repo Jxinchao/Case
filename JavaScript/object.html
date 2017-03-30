@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//1.创建方法 
+	/*var obj = {
+		 // name:"超超",
+		 // age:17,
+		 get:function(x,y){   //构造函数
+		 	this.name = x;
+		 	this.age = y;
+		 },
+		 put:function(){
+		 	return this.name+this.age;
+		 	//this表示当前作用域下对象指向了obj,因为obj是创建这个对象的变量
+
+		 	//this表示new object实例化出来的那个对象
+		 }
+	}
+	alert(obj.name);
+	alert(obj['name'])
+	obj.get("哈哈",100)
+	alert(obj.put())
+
+	
+	//2.函数添加
+	var obj = new Object();
+	obj.name = "超超";
+	obj.age = 37;
+	alert(obj.name);
+	alert(obj['name']);
+    
+    //3.for in 可以访问这个对象
+	var obj = {
+		name:'超超',
+		age:37
+	}
+	//其中x指向了属性 name age
+	for(x in obj){
+		alert(x)
+	}
+
+	//4.添加属性
+	var obj = {
+		name:'超超',
+		age:37
+	}
+	obj.sex = '男';
+	alert(obj.sex)*/	
+
+	var obj = {
+		 // name:"超超",
+		 // age:17,
+		 get:function(x,y){   //构造函数
+		 	this.name = x;
+		 	this.age = y;
+		 },
+		 put:function(){
+		 	return this.name+this.age+this.sex;
+		 }
+	}
+	obj.get('王佳新',26)
+	obj.sex = '女';		
+	alert(obj.put())
+	</script>
+</body>
+</html>

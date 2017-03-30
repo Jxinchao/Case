@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//3.静态方法
+	//alert(typeof RegExp.input) //string类型说明是有    但是必须先执行一下才能有结果
+	var s1 = /(box)/ig;
+	var s2 = 'this is a box';
+	s1.test(s2);  //必须先执行匹配
+	//alert(RegExp.input)  //才能弹出匹配结果，弹出匹配到的字符串
+
+	//alert(RegExp['$_'])   //相等于RegExp.input,是符号类型的
+
+	alert(RegExp.$_)  //以上三种都一样。只有下划线的可以调用属性方法
+
+	//alert(RegExp.leftContext);  //匹配成功后返回匹配元素其前面元素
+
+	//alert(RegExp.rightContext)
+
+	//alert(RegExp.lastMatch)  //最后一个匹配到字符串。就是匹配到的，如果全局有多个box，那么是最后一个匹配的box
+
+	//alert(RegExp.lastParen)  //是个空。如果正则中加个括号就没问题了
+	</script>
+</body>
+</html>

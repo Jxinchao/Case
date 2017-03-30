@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#div{position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;width:200px;height:200px;border:1px solid yellow;box-shadow:0 0 20px 0 red;}
+	</style>
+
+</head>
+<body>
+	<div id="div"></div>
+	<script type="text/javascript">
+		window.onload = function (){
+    	var box = document.getElementById('div');
+    	var max = 30;
+
+    	document.onmousemove = function (e){
+    		var ev = e || event;
+    		var needX = Number(ev.clientX/window.innerWidth.toFixed(2));
+    		var needY = Number(ev.clientY/window.innerHeight.toFixed(2));
+    		/*
+
+				needX 越小  x 越大
+				needY 越小  y 越大
+				0%         30
+				100%       -30
+
+				30+(x*-60)
+    		*/
+    		console.log(needX)
+    		box.style.boxShadow =(30+(needX* (-60)))+'px '+(30+(needY* (-60)))+'px 20px black'
+
+
+    		//document.title = parseInt(ev.clientX/window.innerWidth*100) +','+parseInt(ev.clientY/window.innerHeight*100);
+    		//console.log()
+    		//window.innerWidth
+    	}
+
+
+    }
+	</script>
+</body>
+</html>

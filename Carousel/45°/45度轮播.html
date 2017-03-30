@@ -1,0 +1,72 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+    <style type="text/css">
+*{margin: 0;padding: 0;}
+div{
+	transition:1s all ease;
+	transform:perspective(800px);
+}
+.class3{
+	width: 300px;height: 200px;position: absolute;left: 50%;top: 50%;margin: -100px 0 0 -150px;
+	z-index:5;
+	
+}
+.class2{
+	width: 300px;height: 200px;position: absolute;left: 30%;top: 50%;margin: -100px 0 0 -150px;
+
+	transform:perspective(800px) rotateY(60deg);
+}
+.class1{
+	width: 300px;height: 200px;position: absolute;left: 10%;top: 50%;margin: -100px 0 0 -150px;
+	opacity: 0;
+	transform:perspective(800px) rotateY(60deg);
+}
+.class4{
+	width: 300px;height: 200px;position: absolute;left: 70%;top: 50%;margin: -100px 0 0 -150px;
+
+	transform:perspective(800px) rotateY(-60deg);
+	z-index: 4;
+}
+.class5{
+	width: 300px;height: 200px;position: absolute;left: 90%;top: 50%;margin: -100px 0 0 -150px;
+
+	transform:perspective(800px) rotateY(-60deg);
+	z-index: 4;
+	opacity: 0;
+}
+div img{width: 100%;height: 100%;}
+
+    </style>
+</head>
+<body>
+<div class='class1'><img src="img/3.jpg"></div>
+<div class='class2'><img src="img/2.jpg"></div>
+<div class='class3'><img src="img/1.jpg"></div>
+<div class='class4'><img src="img/4.jpg"></div>
+<div class='class5'><img src="img/5.jpg"></div>
+<script type="text/javascript">
+	
+var allDiv = document.getElementsByTagName('div');
+var arr = [];
+for(var i = 0;i < allDiv.length;i++){
+	arr.push(allDiv[i].className);
+};
+//alert(arr)
+
+document.onclick = function(){
+	arr.push(arr.shift());
+	for(var i = 0;i < allDiv.length;i++){
+		allDiv[i].className = ''
+		allDiv[i].className = arr[i];
+	}
+
+}
+
+//alert(arr)
+
+</script>
+</body>
+</html>

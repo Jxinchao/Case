@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		overflow:hidden;
+	}
+	canvas{
+		background:#ccc;
+	}
+	button{
+		position:absolute;
+		top:10px;
+		left:30px;
+		float:left;
+		width:100px;
+		height:40px;
+	}
+	button:nth-child(2){
+		top:60px;
+	}
+	button:nth-child(3){
+		top:110px;
+	}
+	button:nth-child(4){
+		top:160px;
+	}
+	</style>
+</head>
+<body>
+	<button id="oUp">上</button>
+	<button id="down">下</button>
+	<button id="oleft">左</button>
+	<button id="oright">右</button>
+	<canvas id="canvas">
+		您的浏览器版本太低了，请您赶快去升级！！！
+	</canvas>
+
+	<script>
+
+		canvas.width = innerWidth;
+		canvas.height = innerHeight;
+		var _timer = null;
+		var oCanvas = canvas.getContext('2d'); 
+		var img = new Image();
+		img.src = '3.png';
+
+		img.onload = function(){
+			var n = 0;
+			var iNow = 200;
+			var iNow2 = 500;
+
+			function start(x,y,z){
+				clearInterval(_timer)
+				function front(){
+					n++;
+					iNow += x;
+					iNow2 += y;
+					if(n==4)n=0;
+					oCanvas.clearRect(0,0,canvas.width,canvas.height);
+					oCanvas.drawImage(
+						img,    //图片src
+						n*86,z,	//图片距离原图的XY轴
+						86,103, //图片距离原图大小的宽高
+						iNow2,iNow, 	//图与画布距离的XY轴
+						86,103  //要使用图片的宽度高度
+					)	
+				}
+				clearInterval(_timer);
+				_timer = setInterval(front,300);
+			}
+			start(1,0,0);
+			down.onclick = function(){
+				start(1,0,0);
+			}
+			oUp.onclick = function(){
+				start(-1,0,338);
+			}
+			oleft.onclick = function(){
+				start(0,-1,114);
+			}
+			oright.onclick = function(){
+				start(0,1,227);
+			}
+		};
+			/*function reverse(){
+				n++;
+				iNow -= 3;
+				iNow2 -= 0;
+				if(n==4)n=0;
+				oCanvas.clearRect(0,0,canvas.width,canvas.height);
+				oCanvas.drawImage(
+					img,    //图片src
+					n*86,338,	//图片距离原图的XY轴
+					86,103, //图片距离原图大小的宽高
+					iNow2,iNow, 	//图与画布距离的XY轴
+					86,103  //要使用图片的宽度高度
+				)	
+			}
+
+			function oLeft(){
+				n++;
+				iNow -= 0;
+				iNow2 -= 3;
+				if(n==4)n=0;
+				oCanvas.clearRect(0,0,canvas.width,canvas.height);
+				oCanvas.drawImage(
+					img,    //图片src
+					n*86,114,	//图片距离原图的XY轴
+					86,103, //图片距离原图大小的宽高
+					iNow2,iNow, 	//图与画布距离的XY轴
+					86,103  //要使用图片的宽度高度
+				)	
+			}
+			function oRight(){
+				n++;
+				iNow += 0;
+				iNow2 += 3;
+				if(n==4)n=0;
+				oCanvas.clearRect(0,0,canvas.width,canvas.height);
+				oCanvas.drawImage(
+					img,    //图片src
+					n*86,227,	//图片距离原图的XY轴
+					86,103, //图片距离原图大小的宽高
+					iNow2,iNow, 	//图与画布距离的XY轴
+					86,103  //要使用图片的宽度高度
+				)	
+			}
+			//下面
+			down.onclick = function(){
+				clearInterval(_timer)
+				clearInterval(_left)
+				clearInterval(_right)
+				clearInterval(_timer)
+				clearInterval(_down)
+				_down = setInterval(front,200)
+			}
+
+			//上面
+			oUp.onclick = function(){
+				clearInterval(_down)
+				clearInterval(_left)
+				clearInterval(_right)
+				clearInterval(_timer)
+				clearInterval(_timer)
+				_timer = setInterval(reverse,200)
+			}
+			//左面
+			oleft.onclick = function(){
+				clearInterval(_down)
+				clearInterval(_timer)
+				clearInterval(_timer)
+				clearInterval(_right)
+				clearInterval(_left)
+				_left = setInterval(oLeft,200)
+			}
+			//右面
+			oright.onclick = function(){
+				clearInterval(_down)
+				clearInterval(_left)
+				clearInterval(_timer)
+				clearInterval(_timer)
+				clearInterval(_right)
+				_right = setInterval(oRight,200);
+			}
+			/*_down = null,
+			_left = null,
+			_right = null,
+			arr = [];
+			_timer = setInterval(front,200)*/
+		
+
+		
+	</script>
+
+</body>
+</html>

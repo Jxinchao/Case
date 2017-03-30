@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			if(localStorage.a){
+				var b = parseInt(localStorage.a)+1;
+				localStorage.a = b;
+			}else{
+				localStorage.a = 1
+			}
+			console.log(localStorage.a)
+			//出现NAN的时候清除缓冲
+		</script>
+	</body>
+</html>

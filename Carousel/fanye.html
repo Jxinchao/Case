@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:600px;
+		height:300px;
+		border:1px solid #eee;
+		margin:50px auto;
+		position:relative;
+	}
+	.page{
+		width:300px;
+		height:300px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.page2{
+		width:300px;
+		height:300px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:300px;
+		background:red;
+	}
+	.page3{
+		width:300px;
+		height:300px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:300px;
+		z-index:99;
+		transform-origin:left;
+	}
+</style>
+</head>
+<body>
+<button id="btn">下一页</button>
+<div class="box" id="box">
+	<div class="page" id="one"></div>
+	<div class="page2" id="two"></div>
+	<div class="page3" id="three"></div>
+</div>
+<script>
+var arr=["red","blue","green","pink"];
+var oBtn=document.getElementById("btn");
+var n=0;
+var n2=0;
+var n3=0;
+var timer;
+oBtn.onclick=fanye;
+function fanye(){
+	oBtn.onclick=null;
+	n3=n2+1;
+	if(n3==arr.length){
+		n3=0;
+	}
+	two.style.background=arr[n3];
+	timer=setInterval(function(){
+		n--;
+		three.style.transform="perspective(800px) rotateY("+n+"deg)";
+		if(n==-90){
+			n2++;
+			if(n2==arr.length){
+				n2=0;
+			}
+			three.style.background=arr[n2];
+		}
+		if(n==-180){
+			clearInterval(timer);
+			one.style.background=arr[n2];
+			three.style.transform="perspective(800px) rotateY(0deg)";
+			n=0;
+			oBtn.onclick=fanye;
+		}
+	},7);
+}
+	
+</script>
+</body>
+</html>

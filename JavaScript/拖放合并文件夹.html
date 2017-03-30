@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>合并文件夹</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.box{
+			width:600px;
+			height:150px;
+			margin:0 auto;
+			border:1px solid #eee;
+			display:flex;
+			flex-wrap:wrap;
+			justify-content: space-around;
+			box-sizing:border-box;
+			padding-top:25px;
+		}
+		.box>.box1{
+			width:100px;
+			height:100px;
+			/*display:flex;*/
+			/*flex-wrap:wrap;*/
+			line-height:50px;
+			box-sizing:border-box;
+		}
+		.box>.box1>p{
+			width:100%;
+			height:100%;
+			float:left;
+		}
+		.one{
+			background:red;
+		}
+		.two{
+			background:orange;
+		}
+		.three{
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+<div class="box" id="box">
+	<div class="box1"><p class="one" id="one" draggable="true"></p></div>
+	<div class="box1"><p class="two" id="two" draggable="true"></p></div>
+	<div class="box1"><p class="three" id="three" draggable="true"></p></div>
+</div>
+<script>
+var oBox=document.getElementById("box");
+var oOne=document.getElementById("one");
+var oTwo=document.getElementById("two");
+var oThree=document.getElementById("three");
+var ele;
+for(var i=0; i<oBox.children.length; i++){
+	oBox.children[i].children[0].addEventListener("dragstart",fn,false);
+	oBox.children[i].addEventListener("dragover",fn2,false);
+	oBox.children[i].addEventListener("dragenter",fn3,false);
+	oBox.children[i].addEventListener("dragleave",fn4,false);
+	oBox.children[i].addEventListener("drop",fn5,false);
+}
+function fn(){
+	var ev=ev||event;
+	ev.dataTransfer.setData("data",ev.target.id);
+	ele=ev.target;
+}
+function fn2(ev){
+	var ev=ev||event;
+	ev.preventDefault();
+}
+var a=0;
+function fn3(ev){
+	var ev=ev||event;
+	ev.preventDefault();
+	if(this.children[0].compareDocumentPosition(ele)!=0){
+		this.style.border="5px solid #ccc";
+		this.style.borderRadius="5px";
+		this.style.marginTop="-5px";
+	}
+}
+function fn4(ev){
+	var ev=ev||event;
+	ev.preventDefault();
+	this.style.border=0;
+	this.style.marginTop=0;
+}
+function fn5(ev){
+	var ev=ev||event;
+	ev.preventDefault();
+	var ele=ev.dataTransfer.getData("data");
+	this.appendChild(document.getElementById(ele));
+	if(this.children.length>1){
+		for(var j=0; j<this.children.length; j++){
+			this.children[j].style.width="40%";
+			this.children[j].style.height="40%";
+			this.children[j].style.marginTop="6.66%";
+			this.children[j].style.marginLeft="6.66%";
+			this.style.border=0;
+			this.style.background="rgba(0,0,0,.4)";
+			this.style.borderRadius="10px";
+		}
+	}else if(this.children.length==1){
+		this.style.border=0;
+	}
+	for(var i=0; i<oBox.children.length; i++){
+		if(oBox.children[i].children.length==0){
+			oBox.children[i].style.background="transparent";
+		}
+	}
+	if(this.children.length==1){
+		this.children[0].style.width="100%";
+		this.children[0].style.height="100%";
+		this.children[0].style.margin=0;
+	}
+}
+</script>
+</body>
+</html>

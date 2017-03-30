@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var obj = new Object();
+		obj.name = '超超';
+		obj.age = '12';
+		obj.runs = function(){
+			return this.name + this.age;
+		} 
+		var obj1 = obj;  
+		obj1.name = '超超1'; //添加属性
+		obj1.age = '13'; //添加属性
+		obj1.runs = function(){  //创建方法
+			return this.name + this.age;
+		} 
+		alert(obj1.runs());
+		alert(obj.runs())
+	</script>
+</body>
+</html>

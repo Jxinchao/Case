@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;}
+			ul{display:flex;width:100%;}
+			ul li{flex:1;border-right:1px solid red;}
+			ul li img{width:100%;border-bottom:1px solid blue;}
+		</style>
+		<script>
+			window.onload=window.onresize=function(){
+				var str = window.innerWidth;
+				var a = 0;
+				if(str >= 1920){
+					a = 10;
+				}else if(str>=1366){
+					a = 8;
+				}else if(str>=1200){
+					a = 7;
+				}else if(str>800){
+					a = 4;
+				}else{
+					a = 2;
+				}
+				var oUl = document.getElementsByTagName("ul")[0];
+				oUl.innerHTML = '';
+				var arr = ["img/hand.png", "img/loading.png", "img/logo.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/loading.png", "img/logo.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png","img/hand.png", "img/loading.png", "img/logo.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/loading.png", "img/logo.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png", "img/page2-img.png", "img/page3-img.png", "img/page4-img.png", "img/page5-img.png"];
+				for(var i=0;i<a;i++){
+					var aLi = document.createElement("li");
+					oUl.appendChild(aLi)
+				}
+				var _li = oUl.getElementsByTagName('li');
+				var b = 0;
+				for(var i=0;i<arr.length;i++){
+					var oImg = document.createElement('img');
+					oImg.src = arr[i];
+					_li[b].appendChild(oImg)
+					b++;
+					if(b == a){
+						b=0;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	#box{
+		width:300px;
+		height:30px;
+		/*background:black;*/
+		position:relative;
+		margin:300px auto;
+		transform-style:preserve-3d;
+	}
+	.box1{
+		width:300px;
+		height:30px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(150px);
+	}
+	.box2{
+		width:300px;
+		height:30px;
+		background:lime;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-150px);
+	}
+	.box3{
+		width:300px;
+		height:30px;
+		background:pink;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:rotateY(90deg) translateZ(150px) ;
+	}
+	.box4{
+		width:300px;
+		height:30px;
+		background:lime;
+		position:absolute;
+		top:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:rotateY(90deg) translateZ(-150px) ;
+	}
+	.box5{
+		width:300px;
+		height:300px;
+		background:blue;
+		position:absolute;
+		bottom:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:rotateX(-90deg) translateY(150px);
+	}
+	.box6{
+		width:300px;
+		height:300px;
+		background:green;
+		position:absolute;
+		bottom:0;
+		left:0;
+		transform-origin:50% 100%;
+		transform:rotateX(90deg) translateY(150px) translateZ(30px);
+	}
+	.left1{
+		width:30px;
+		height:200px;
+		background:#ccc;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(150px);
+	}
+	.left2{
+		width:30px;
+		height:200px;
+		background:blue;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(120px);
+	}
+	.left3{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(135px) rotateY(90deg) translateZ(15px);
+	}
+	.left4{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(135px) rotateY(90deg) translateZ(-15px);
+	}
+	.left5{
+		width:30px;
+		height:30px;
+		background:red;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(150px) rotateX(90deg) translateZ(200px);
+	}
+	.right1{
+		width:30px;
+		height:200px;
+		background:#ccc;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(150px);
+	}
+	.right2{
+		width:30px;
+		height:200px;
+		background:blue;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(120px);
+	}
+	.right3{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(135px) rotateY(90deg) translateZ(15px);
+	}
+	.right4{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(135px) rotateY(90deg) translateZ(-15px);
+	}
+	.right5{
+		width:30px;
+		height:30px;
+		background:red;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(150px) rotateX(90deg) translateZ(200px);
+	}
+	.top1{
+		width:30px;
+		height:200px;
+		background:#ccc;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-150px);
+	}
+	.top2{
+		width:30px;
+		height:200px;
+		background:blue;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-120px);
+	}
+	.top3{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-135px) rotateY(90deg) translateZ(15px);
+	}
+	.top4{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-135px) rotateY(90deg) translateZ(-15px);
+	}
+	.top5{
+		width:30px;
+		height:30px;
+		background:red;
+		position:absolute;
+		bottom:30px;
+		right:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-120px) rotateX(90deg) translateZ(200px);
+	}
+	.bottom1{
+		width:30px;
+		height:200px;
+		background:#ccc;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-150px);
+	}
+	.bottom2{
+		width:30px;
+		height:200px;
+		background:blue;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-120px);
+	}
+	.bottom3{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-135px) rotateY(90deg) translateZ(15px);
+	}
+	.bottom4{
+		width:30px;
+		height:200px;
+		background:yellow;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-135px) rotateY(90deg) translateZ(-15px);
+	}
+	.bottom5{
+		width:30px;
+		height:30px;
+		background:red;
+		position:absolute;
+		bottom:30px;
+		left:0;
+		transform-origin:50% 100%;
+		transform:translateZ(-120px) rotateX(90deg) translateZ(200px);
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+		<div class="box5"></div>
+		<div class="box6"></div>
+		<div class="left1"></div>
+		<div class="left2"></div>
+		<div class="left3"></div>
+		<div class="left4"></div>
+		<div class="left5"></div>
+		<div class="right1"></div>
+		<div class="right2"></div>
+		<div class="right3"></div>
+		<div class="right4"></div>
+		<div class="right5"></div>
+		<div class="top1"></div>
+		<div class="top2"></div>
+		<div class="top3"></div>
+		<div class="top4"></div>
+		<div class="top5"></div>
+		<div class="bottom1"></div>
+		<div class="bottom2"></div>
+		<div class="bottom3"></div>
+		<div class="bottom4"></div>
+		<div class="bottom5"></div>
+	</div>
+
+	<script>
+		var n = 0;
+
+		var timer = setInterval(function(){
+			n += 0.4;
+			box.style.transform = 'rotateX('+n+'deg) rotateY('+n+'deg)';
+		},10)
+
+		document.onclick = function(){
+			clearInterval(timer);
+		}
+	</script>
+</body>
+</html>

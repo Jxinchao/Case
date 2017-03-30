@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>颜色</title>
+	<style>	
+		div{
+			width:100px;
+			height:100px;
+			background: red;
+			font-size:100px;
+			margin: 0 auto;
+		}
+		:root{background:#000;}
+	</style>
+</head>
+<body>
+	<div>王爱民</div>
+</body>
+<script type="text/javascript">
+	function $(findNode){
+		return document.querySelector(findNode)
+	}
+	var div = $("div")
+	console.log($("div"))
+	setInterval(function(){
+		div.style.background = 'rgb('+random(0,256)+','+random(0,256)+','+random(0,256)+')';
+		div.style.color = 'rgb('+random(0,256)+','+random(0,256)+','+random(0,256)+')';
+	},100)
+
+	function random(min,max){
+		return Math.round(Math.random()*(max-min)+min)
+	}
+</script>
+</html>

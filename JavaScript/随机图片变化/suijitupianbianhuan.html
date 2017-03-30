@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机图片变换</title>
+	<style>
+	/*{padding:0;margin:0;}*/
+	#main{position:relative;;width:500px;height:220px;border:1px solid #999;margin:0 auto;}
+	img{padding-left:7px;padding-top:5px;}
+	</style>
+	<script>
+window.onload=function(){
+	var oDiv=document.getElementById('main');
+	var oImg=oDiv.getElementsByTagName('img');
+	// var oUl=document.getElementsByTagName('ul')[0];
+	// var aLi=oUl.getElementsByTagName('li');
+	var arrImg=['img/4f6.jpg','img/4f6.jpg','img/4f8.jpg','img/4f9.jpg','img/4f8.jpg','img/4f9.jpg','img/4f10.jpg','img/4f11.jpg','img/4f12.jpg','img/4f13.jpg','img/4f14.jpg','img/4f15.jpg',];
+	var num=0;
+	var timer=null;
+       timer=setInterval(function(){
+       oImg[Math.floor(Math.random()*8)].src=arrImg[Math.floor(Math.random()*10)]},200);
+       
+	// function btn(){
+	// 	for(var i=0;i<aLi.length;i++){	
+	// 		aLi[i].innerHTML='<img src="'+arrImg[num]+'"/>'
+	// 	};
+	// }
+	// function show(){
+	// 		timer=setInterval(function(){
+	// 		num++;
+	// 		arrImg.sort(function(){
+	// 		return Math.random()-0.5
+	// 	});
+	// 		num%=arrImg.length;
+	// 		btn(num);
+	// 		},1000)
+	// 	}
+	// show();
+}	
+	</script>
+
+</head>
+<body>
+	<div id="main">
+	<img src="img/4f2.jpg"/>
+	<img src="img/4f3.jpg"/>
+	<img src="img/4f4.jpg"/>
+	<img src="img/4f5.jpg"/>
+	<img src="img/4f6.jpg"/>
+	<img src="img/4f9.jpg"/>
+	<img src="img/4f8.jpg"/>
+	<img src="img/4f11.jpg"/>
+		
+	</div>
+</body>
+</html>

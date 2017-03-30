@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="my">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="a">
+		<select ng-model="v">
+			<option value="name">按name排序</option>
+			<option value="pwd">按pwd排序</option>
+		</select>
+		{{v}}
+		<ul>
+			<li ng-repeat="a in name | orderBy:v ">
+				{{a.name+'----'+a.pwd}}
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var app = angular.module('my',[]);
+		app.controller('a',function($scope){
+			$scope.name=[
+			{name:'kimi',pwd:7},
+			{name:'cindy',pwd:2},
+			{name:'anglar',pwd:1},
+			{name:'chaochao',pwd:5},
+			{name:'shitou',pwd:61}
+			]
+		})
+	</script>
+</body>
+</html>

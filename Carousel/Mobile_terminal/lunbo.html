@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;padding:0;list-style:none;
+	}
+	body{
+		overflow:hidden;
+	}
+	ul{
+		width:400%;
+		height:100%;
+		position:absolute;
+	}
+	ul>li{
+		width:25%;
+		height:100%;
+		display: -webkit-box;
+		-webkit-box-pack:center;
+		-webkit-box-align:center;
+		float: left;
+	}
+	ul>li img{
+		max-height:100%;
+		max-width:100%;
+	}
+	</style>
+</head>
+<body>
+	<ul id="oUl">
+		<li><img src="img/a.jpg"/></li>
+		<li><img src="img/b.jpg"/></li>
+		<li><img src="img/c.jpg"/></li>
+		<li><img src="img/d.jpg"/></li>
+	</ul>
+
+	<script>
+		var oldX = 0,
+			nexX = 0,
+			index = 0,
+			oLi = oUl.getElementsByTagName('li'),
+			oW = innerWidth,
+			arr = [];
+		oUl.addEventListener('touchstart',start,false);
+		oUl.addEventListener('touchmove',move,false);
+		oUl.addEventListener('touchend',end,false);
+		for(var i = 0;i<oLi.length;i++){
+			arr.push(oLi[i]);
+		}
+		function start(e){
+			if(index == oLi.length-1){
+				oUl.appendChild(oLi[0]);
+				index--;
+				oLi[index].style.transform = 'translateX('+(-oW*index)+'px)';
+				oLi[index+1].style.transform = 'translateX('+(-oW*index)+'px)';
+			}
+			if(index == 0){
+				arr.unshift(arr.pop());
+				for(var i =0;i<arr.length;i++){
+					oUl.appendChild(arr[i]);
+				}
+				index++;
+				oLi[index].style.transform ='translateX('+(-oW)+'px)';
+			}
+			oldX = e.touches[0].clientX;
+			oLi[index].style.transition = '0s';
+			oLi[index-1].style.transition = '0s';
+			oLi[index+1].style.transition = '0s';
+		}
+
+		function move(e){
+			newX = e.touches[0].clientX - oldX;
+			oLi[index].style.transform = 'translateX('+((-oW*index)+newX)+'px)';
+			oLi[index+1].style.transform = 'translateX('+((-oW*index)+newX)+'px)';
+			oLi[index-1].style.transform = 'translateX('+((-oW*index)+newX)+'px)';
+		}
+
+		function end(e){
+			if(newX%oW < 0 && newX%oW>-50){
+				oLi[index].style.transition = '0.3s';
+				oLi[index+1].style.transition = '0.3s';
+				oLi[index].style.transform = 'translateX('+(-oW*index)+'px)';
+				oLi[index+1].style.transform = 'translateX('+(-oW*index)+'px)';
+			}else if(newX%oW<-50){
+				oLi[index].style.transition = '0.3s';
+				oLi[index+1].style.transition = '0.3s';
+				oLi[index].style.transform = 'translateX('+(-oW*(index+1))+'px)';
+				oLi[index+1].style.transform = 'translateX('+(-oW*(index+1))+'px)';
+				index++;
+			}else if(newX%oW > 50){
+				index--;
+				if(index < 0)index = 0;
+				oLi[index].style.transition = '0.3s';
+				oLi[index+1].style.transition = '0.3s';
+				oLi[index].style.transform = 'translateX('+(-oW*index)+'px)';
+				oLi[index+1].style.transform = 'translateX('+(-oW*index)+'px)';
+			}else{
+				oLi[index].style.transition = '0.3s';
+				oLi[index+1].style.transition = '0.3s';
+				oLi[index].style.transform = 'translateX('+(-oW*index)+'px)';
+				oLi[index+1].style.transform = 'translateX('+(-oW*index)+'px)';
+			}	
+		}
+
+	</script>
+</body>
+</html>
